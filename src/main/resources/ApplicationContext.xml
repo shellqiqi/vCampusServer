@@ -3,11 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <!--TODO: 将做好的数据库放到vCampusServer目录下，并且将下面的数据库位置改为数据库文件名且带后缀-->
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="net.ucanaccess.jdbc.UcanaccessDriver" />
-        <property name="url" value="jdbc:ucanaccess://./数据库位置" />
+        <property name="url" value="jdbc:ucanaccess://./vCampus.accdb" />
         <property name="username" value="" />
         <property name="password" value="" />
     </bean>
