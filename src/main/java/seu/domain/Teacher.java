@@ -4,31 +4,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Teacher {
-    private int TeacherID;
-    private String TeacherName;
-    private String TeacherPhoneNumber;
+    private int teacherId;
+    private String teacherName;
+    private String teacherPhoneNumber;
 
-    public int getTeacherID() {
-        return TeacherID;
-    }
+    public int getTeacherId() { return teacherId; }
 
-    public void setTeacherID(int teacherID) {
-        TeacherID = teacherID;
-    }
+    public void setTeacherId(int teacherId) { this.teacherId = teacherId; }
 
-    public String getTeacherName() {
-        return TeacherName;
-    }
+    public String getTeacherName() { return teacherName; }
 
-    public void setTeacherName(String teacherName) {
-        TeacherName = teacherName;
-    }
+    public void setTeacherName(String teacherName) { this.teacherName = teacherName; }
 
-    public String getTeacherPhoneNumber() {
-        return TeacherPhoneNumber;
-    }
+    public String getTeacherPhoneNumber() { return teacherPhoneNumber; }
 
-    public void setTeacherPhoneNumber(String teacherPhoneNumber) {
-        TeacherPhoneNumber = teacherPhoneNumber;
-    }
+    public void setTeacherPhoneNumber(String teacherPhoneNumber) { this.teacherPhoneNumber = teacherPhoneNumber; }
 }
