@@ -1,0 +1,1 @@
+Spring application context config
