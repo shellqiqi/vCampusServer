@@ -4,49 +4,29 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Student {
-    private int StuentID;
-    private String StudentName;
-    private int ClassID;
-    private int DormitoryID;
-    private int Balance;
+    private int stuentId;
+    private String studentName;
+    private int classId;
+    private int dormitoryId;
+    private int balance;
 
-    public int getStuentID() {
-        return StuentID;
-    }
+    public int getStuentId() { return stuentId; }
 
-    public void setStuentID(int stuentID) {
-        StuentID = stuentID;
-    }
+    public void setStuentId(int stuentId) { this.stuentId = stuentId; }
 
-    public String getStudentName() {
-        return StudentName;
-    }
+    public String getStudentName() { return studentName; }
 
-    public void setStudentName(String studentName) {
-        StudentName = studentName;
-    }
+    public void setStudentName(String studentName) { this.studentName = studentName; }
 
-    public int getClassID() {
-        return ClassID;
-    }
+    public int getClassId() { return classId; }
 
-    public void setClassID(int classID) {
-        ClassID = classID;
-    }
+    public void setClassId(int classId) { this.classId = classId; }
 
-    public int getDormitoryID() {
-        return DormitoryID;
-    }
+    public int getDormitoryId() { return dormitoryId; }
 
-    public void setDormitoryID(int dormitoryID) {
-        DormitoryID = dormitoryID;
-    }
+    public void setDormitoryId(int dormitoryId) { this.dormitoryId = dormitoryId; }
 
-    public int getBalance() {
-        return Balance;
-    }
+    public int getBalance() { return balance; }
 
-    public void setBalance(int balance) {
-        Balance = balance;
-    }
+    public void setBalance(int balance) { this.balance = balance; }
 }
