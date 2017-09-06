@@ -9,6 +9,17 @@ public class CourseSelect {
     private int courseId;
     private int grade;
 
+    public CourseSelect(){
+
+    }
+
+    public CourseSelect(int courseSelectId, int studentId, int courseId, int grade) {
+        this.courseSelectId = courseSelectId;
+        this.studentId = studentId;
+        this.courseId = courseId;
+        this.grade = grade;
+    }
+
     public int getCourseSelectId() { return courseSelectId; }
 
     public void setCourseSelectId(int courseSelectId) { this.courseSelectId = courseSelectId; }

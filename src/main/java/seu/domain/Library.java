@@ -12,6 +12,18 @@ public class Library {
     private Date period;
     private Date returnDate;
 
+    public Library(){
+
+    }
+
+    public Library(int bookId, String bookName, int studentId, Date period, Date returnDate) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.studentId = studentId;
+        this.period = period;
+        this.returnDate = returnDate;
+    }
+
     public int getBookId() { return bookId; }
 
     public void setBookId(int bookId) { this.bookId = bookId; }
@@ -31,4 +43,15 @@ public class Library {
     public Date getReturnDate() { return returnDate; }
 
     public void setReturnDate(Date returnDate) { this.returnDate = returnDate; }
+
+    @Override
+    public String toString() {
+        return "Library{" +
+                "bookId=" + bookId +
+                ", bookName='" + bookName + '\'' +
+                ", studentId=" + studentId +
+                ", period=" + period +
+                ", returnDate=" + returnDate +
+                '}';
+    }
 }

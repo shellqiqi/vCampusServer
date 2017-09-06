@@ -10,6 +10,17 @@ public class Course {
     private int period;
     private int teacherId;
 
+    public Course(){
+
+    }
+    public Course(int courseId, String courseName, int credit, int period, int teacherId) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.credit = credit;
+        this.period = period;
+        this.teacherId = teacherId;
+    }
+
     public int getCourseId() { return courseId; }
 
     public void setCourseId(int courseId) { this.courseId = courseId; }
@@ -29,4 +40,15 @@ public class Course {
     public int getTeacherId() { return teacherId; }
 
     public void setTeacherId(int teacherId) { this.teacherId = teacherId; }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseId=" + courseId +
+                ", courseName='" + courseName + '\'' +
+                ", credit=" + credit +
+                ", period=" + period +
+                ", teacherId=" + teacherId +
+                '}';
+    }
 }
