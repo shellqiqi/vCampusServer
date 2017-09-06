@@ -9,6 +9,16 @@ public class Commodity {
     private int prize;
     private int inventory;
 
+    public Commodity(){
+    }
+
+    public Commodity(int id, String name, int prize, int inventory){
+        this.setCommodityId(id);
+        this.setCommodityName(name);
+        this.setPrize(prize);
+        this.setInventory(inventory);
+    }
+
     public int getCommodityId() { return commodityId; }
 
     public void setCommodityId(int commodityId) { this.commodityId = commodityId; }
@@ -24,4 +34,14 @@ public class Commodity {
     public int getInventory() { return inventory; }
 
     public void setInventory(int inventory) { this.inventory = inventory; }
+
+    @Override
+    public String toString() {
+        return "Commodity{" +
+                "commodityId=" + commodityId +
+                ", commodityName='" + commodityName + '\'' +
+                ", prize=" + prize +
+                ", inventory=" + inventory +
+                '}';
+    }
 }

@@ -10,6 +10,17 @@ public class Student {
     private int dormitoryId;
     private int balance;
 
+    public  Student(){
+
+    }
+    public Student(int stuentId, String studentName, int classId, int dormitoryId, int balance) {
+        this.stuentId = stuentId;
+        this.studentName = studentName;
+        this.classId = classId;
+        this.dormitoryId = dormitoryId;
+        this.balance = balance;
+    }
+
     public int getStuentId() { return stuentId; }
 
     public void setStuentId(int stuentId) { this.stuentId = stuentId; }
@@ -29,4 +40,15 @@ public class Student {
     public int getBalance() { return balance; }
 
     public void setBalance(int balance) { this.balance = balance; }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "stuentId=" + stuentId +
+                ", studentName='" + studentName + '\'' +
+                ", classId=" + classId +
+                ", dormitoryId=" + dormitoryId +
+                ", balance=" + balance +
+                '}';
+    }
 }
