@@ -12,8 +12,8 @@ public class Library {
     private Date period;
     private Date returnDate;
 
-    public Library(){
-
+    public Library() {
+        super();
     }
 
     public Library(int bookId, String bookName, int studentId, Date period, Date returnDate) {
@@ -24,34 +24,48 @@ public class Library {
         this.returnDate = returnDate;
     }
 
-    public int getBookId() { return bookId; }
+    public int getBookId() {
+        return bookId;
+    }
 
-    public void setBookId(int bookId) { this.bookId = bookId; }
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
+    }
 
-    public String getBookName() { return bookName; }
+    public String getBookName() {
+        return bookName;
+    }
 
-    public void setBookName(String bookName) { this.bookName = bookName; }
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
 
-    public int getStudentId() { return studentId; }
+    public int getStudentId() {
+        return studentId;
+    }
 
-    public void setStudentId(int studentId) { this.studentId = studentId; }
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
 
-    public Date getPeriod() { return period; }
+    public Date getPeriod() {
+        return period;
+    }
 
-    public void setPeriod(Date period) { this.period = period; }
+    public void setPeriod(Date period) {
+        this.period = period;
+    }
 
-    public Date getReturnDate() { return returnDate; }
+    public Date getReturnDate() {
+        return returnDate;
+    }
 
-    public void setReturnDate(Date returnDate) { this.returnDate = returnDate; }
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
 
     @Override
     public String toString() {
-        return "Library{" +
-                "bookId=" + bookId +
-                ", bookName='" + bookName + '\'' +
-                ", studentId=" + studentId +
-                ", period=" + period +
-                ", returnDate=" + returnDate +
-                '}';
+        return "Library{" + "bookId=" + bookId + ", bookName='" + bookName + '\'' + ", studentId=" + studentId + ", period=" + period + ", returnDate=" + returnDate + '}';
     }
 }

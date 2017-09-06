@@ -5,7 +5,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import seu.domain.Class;
-import seu.domain.Student;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
