@@ -12,23 +12,60 @@ public class Library {
     private Date period;
     private Date returnDate;
 
-    public int getBookId() { return bookId; }
+    public Library() {
+        super();
+    }
 
-    public void setBookId(int bookId) { this.bookId = bookId; }
+    public Library(int bookId, String bookName, int studentId, Date period, Date returnDate) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.studentId = studentId;
+        this.period = period;
+        this.returnDate = returnDate;
+    }
 
-    public String getBookName() { return bookName; }
+    public int getBookId() {
+        return bookId;
+    }
 
-    public void setBookName(String bookName) { this.bookName = bookName; }
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
+    }
 
-    public int getStudentId() { return studentId; }
+    public String getBookName() {
+        return bookName;
+    }
 
-    public void setStudentId(int studentId) { this.studentId = studentId; }
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
 
-    public Date getPeriod() { return period; }
+    public int getStudentId() {
+        return studentId;
+    }
 
-    public void setPeriod(Date period) { this.period = period; }
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
 
-    public Date getReturnDate() { return returnDate; }
+    public Date getPeriod() {
+        return period;
+    }
 
-    public void setReturnDate(Date returnDate) { this.returnDate = returnDate; }
+    public void setPeriod(Date period) {
+        this.period = period;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Library{" + "bookId=" + bookId + ", bookName='" + bookName + '\'' + ", studentId=" + studentId + ", period=" + period + ", returnDate=" + returnDate + '}';
+    }
 }

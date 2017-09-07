@@ -9,19 +9,51 @@ public class Commodity {
     private int prize;
     private int inventory;
 
-    public int getCommodityId() { return commodityId; }
+    public Commodity() {
+        super();
+    }
 
-    public void setCommodityId(int commodityId) { this.commodityId = commodityId; }
+    public Commodity(int id, String name, int prize, int inventory) {
+        this.setCommodityId(id);
+        this.setCommodityName(name);
+        this.setPrize(prize);
+        this.setInventory(inventory);
+    }
 
-    public String getCommodityName() { return commodityName; }
+    public int getCommodityId() {
+        return commodityId;
+    }
 
-    public void setCommodityName(String commodityName) { this.commodityName = commodityName; }
+    public void setCommodityId(int commodityId) {
+        this.commodityId = commodityId;
+    }
 
-    public int getPrize() { return prize; }
+    public String getCommodityName() {
+        return commodityName;
+    }
 
-    public void setPrize(int prize) { this.prize = prize; }
+    public void setCommodityName(String commodityName) {
+        this.commodityName = commodityName;
+    }
 
-    public int getInventory() { return inventory; }
+    public int getPrize() {
+        return prize;
+    }
 
-    public void setInventory(int inventory) { this.inventory = inventory; }
+    public void setPrize(int prize) {
+        this.prize = prize;
+    }
+
+    public int getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
+    }
+
+    @Override
+    public String toString() {
+        return "Commodity{" + "commodityId=" + commodityId + ", commodityName='" + commodityName + '\'' + ", prize=" + prize + ", inventory=" + inventory + '}';
+    }
 }
