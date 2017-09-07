@@ -114,13 +114,13 @@ public class TeacherDao {
     @SuppressWarnings("unchecked")
     public List<Teacher> queryTeacherByID(final int id) {
         final String sql = "SELECT * FROM Teacher WHERE TeacherID = ?";
-        Object[] params = new Object[] {id};
-        return (List<Teacher>)jdbcTemplate.query(sql, params, new RowMapper() {
+        Object[] params = new Object[]{id};
+        return (List<Teacher>) jdbcTemplate.query(sql, params, new RowMapper() {
             public Teacher mapRow(ResultSet rs, int rowNum) throws SQLException {
-                return new Teacher(rs.getInt("TeacherID"), rs.getString("TeacherName"),rs.getString("TeacherPhoneNumber"));
+                return new Teacher(rs.getInt("TeacherID"), rs.getString("TeacherName"), rs.getString("TeacherPhoneNumber"));
             }
         });
 
 
-
+    }
 }
