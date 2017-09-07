@@ -24,6 +24,10 @@ public class Student {
         this.password = password;
     }
 
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
+
     public int getStudentId() {
         return studentId;
     }
@@ -70,6 +74,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "studentId=" + studentId + ", studentName='" + studentName + '\'' + ", classId=" + classId + ", dormitoryId=" + dormitoryId + ", balance=" + balance + '}';
+        return "Student{" + "studentId=" + studentId + ", studentName='" + studentName + '\'' + ", classId=" + classId + ", dormitoryId=" + dormitoryId + ", balance=" + balance + ",password='" + password + '\'' + '}';
     }
 }
+
