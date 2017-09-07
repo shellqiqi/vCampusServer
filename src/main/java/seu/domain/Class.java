@@ -10,6 +10,18 @@ public class Class {
     private int classSize;
     private int teacherId;
 
+    public Class() {
+        super();
+    }
+
+    public Class(int classId, String className, String major, int classSize, int teacherId) {
+        this.classId = classId;
+        this.className = className;
+        this.major = major;
+        this.classSize = classSize;
+        this.teacherId = teacherId;
+    }
+
     public int getClassId() {
         return classId;
     }
@@ -48,5 +60,10 @@ public class Class {
 
     public void setTeacherId(int teacherId) {
         this.teacherId = teacherId;
+    }
+
+    @Override
+    public String toString() {
+        return "Class{" + "classId=" + classId + ", className='" + className + '\'' + ", major='" + major + '\'' + ", classSize=" + classSize + ", teacherId=" + teacherId + '}';
     }
 }
