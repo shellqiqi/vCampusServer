@@ -7,8 +7,8 @@ import java.util.Date;
 @Component
 public class Library {
     private int bookId;
-    private String bookName;
     private int studentId;
+    private String bookName;
     private Date period;
     private Date returnDate;
 
