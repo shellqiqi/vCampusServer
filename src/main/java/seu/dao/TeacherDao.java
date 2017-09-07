@@ -92,7 +92,7 @@ public class TeacherDao {
     //添加学生成员
     public void addStudent(final Student student) {
         final String sql = "INSERT INTO Student(StudentID,StudentName,ClassID,DormitoryID,Balance) VALUES(?,?,?,?,?)";
-        Object[] params = new Object[] {student.getStuentId(),student.getStudentName(),student.getClassId(),student.getDormitoryId(),student.getBalance()};
+        Object[] params = new Object[] {student.getStudentId(),student.getStudentName(),student.getClassId(),student.getDormitoryId(),student.getBalance()};
         jdbcTemplate.update(sql, params);
     }
 
@@ -117,7 +117,7 @@ public class TeacherDao {
         Object[] params = new Object[] {id};
         return (List<Teacher>)jdbcTemplate.query(sql, params, new RowMapper() {
             public Teacher mapRow(ResultSet rs, int rowNum) throws SQLException {
-                return new Teacher(rs.getInt("TeacherID"), rs.getString("TeacherName"),rs.getInt("TeacherPhoneNumber"));
+                return new Teacher(rs.getInt("TeacherID"), rs.getString("TeacherName"),rs.getString("TeacherPhoneNumber"));
             }
         });
 

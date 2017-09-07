@@ -7,11 +7,33 @@ public class Dormitory {
     private int dormitoryId;
     private int score;
 
-    public int getDormitoryId() { return dormitoryId; }
+    public Dormitory() {
+        super();
+    }
 
-    public void setDormitoryId(int dormitoryId) { this.dormitoryId = dormitoryId; }
+    public Dormitory(int dormitoryId, int score) {
+        this.dormitoryId = dormitoryId;
+        this.score = score;
+    }
 
-    public int getScore() { return score; }
+    public int getDormitoryId() {
+        return dormitoryId;
+    }
 
-    public void setScore(int score) { this.score = score; }
+    public void setDormitoryId(int dormitoryId) {
+        this.dormitoryId = dormitoryId;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "Dormitory{" + "dormitoryId=" + dormitoryId + ", score=" + score + '}';
+    }
 }

@@ -9,19 +9,51 @@ public class CourseSelect {
     private int courseId;
     private int grade;
 
-    public int getCourseSelectId() { return courseSelectId; }
+    public CourseSelect() {
+        super();
+    }
 
-    public void setCourseSelectId(int courseSelectId) { this.courseSelectId = courseSelectId; }
+    public CourseSelect(int courseSelectId, int studentId, int courseId, int grade) {
+        this.courseSelectId = courseSelectId;
+        this.studentId = studentId;
+        this.courseId = courseId;
+        this.grade = grade;
+    }
 
-    public int getStudentId() { return studentId; }
+    public int getCourseSelectId() {
+        return courseSelectId;
+    }
 
-    public void setStudentId(int studentId) { this.studentId = studentId; }
+    public void setCourseSelectId(int courseSelectId) {
+        this.courseSelectId = courseSelectId;
+    }
 
-    public int getCourseId() { return courseId; }
+    public int getStudentId() {
+        return studentId;
+    }
 
-    public void setCourseId(int courseId) { this.courseId = courseId; }
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
 
-    public int getGrade() { return grade; }
+    public int getCourseId() {
+        return courseId;
+    }
 
-    public void setGrade(int grade) { this.grade = grade; }
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseSelect{" + "courseSelectId=" + courseSelectId + ", studentId=" + studentId + ", courseId=" + courseId + ", grade=" + grade + '}';
+    }
 }
