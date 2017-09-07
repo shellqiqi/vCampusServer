@@ -42,10 +42,14 @@ public class ClassDaoTest {
     }
 
     @Test
+    public void queryClassByTeacherIdTest() throws Exception {
+        System.out.println(classDao.queryClassByTeacherId(1234));
+    }
+
+    @Test
     public void queryClassByStudentIdTest() throws Exception {
         System.out.println(classDao.queryClassByStudentId(16));
     }
-
 
     @Test
     public void queryClassByIdTest() throws Exception {
