@@ -1,5 +1,6 @@
 package seu.dao;
 import seu.domain.Library;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -22,7 +23,7 @@ public class LibraryDao {
 
     public void addBook(final Library book)
     {
-        final String sql = "INSERT INTO book(name,Id) VALUES(book.getBookName(),book.getBookId())";
+        final String sql = "INSERT INTO book(name,Id) VALUES(?,?)";
         Object[] params = new Object[] {book.getBookName(), book.getBookId()};
         jdbcTemplate.update(sql, params);
 
@@ -53,17 +54,35 @@ public class LibraryDao {
     @SuppressWarnings("unchecked")
     public List<Library> queryStudentBookById(final int id)
     {
-        final String sql = "SELECT The Book Condition Of Student Whoes Id = ?";
+        final String sql = "SELECT The Book Condition Of Student WHERE Id = ?";
         Object[] params = new Object[] {id};
         Library stu = new Library();
         return (List<Library>)jdbcTemplate.query(sql, params, new RowMapper()
         {
             public Library mapRow(ResultSet rs, int rowNum) throws SQLException{
-                return new Library(rs.getInt("studentId"), rs.getString("bookName"), rs.getInt("bookId"), rs.getDate("period"), rs.getDate("returnDate"));
+                return new Library(rs.getInt("bookId"),rs.getString("bookName"),rs.getInt("studentId"), rs.getDate("period"), rs.getDate("returnDate"));
             }
         });
     }
 
+    public List<Library> queryAll()
+            {
+        final String sql = "SELECT * FROM Library";
+        return jdbcTemplate.query(sql,new LibraryMapper());
+    }
 
+    private static final class LibraryMapper implements RowMapper<Library> {
 
+        @Override
+        public Library mapRow (ResultSet rs,int rowNum) throws SQLException {
+            return new Library(
+                    rs.getInt("bookId"),
+                    rs.getString("bookName"),
+                    rs.getInt("studentId"),
+                    rs.getDate("period"),
+                    rs.getDate("returnDate")
+
+            );
+        }
+    }
 }
