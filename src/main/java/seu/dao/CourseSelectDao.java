@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import seu.domain.CourseSelect;
 
+
 @Repository
 public class CourseSelectDao {
 
@@ -18,7 +19,7 @@ public class CourseSelectDao {
 
     public int insertCourseSelect(final CourseSelect courseSelect){
         final String sql = "INSERT INTO CourseSelect(StudentID, CourseID, Grade) VALUES(?,?)";
-        Object[] params = new Object[]{CourseSelect.getStudentId(),CourseSelect.getCourseId(),CourseSelect.getGrade()};
+        Object[] params = new Object[]{courseSelect.getStudentId(),courseSelect.getCourseId(),courseSelect.getGrade()};
         return jdbcTemplate.update(sql,params);
     }
     public int insertCourseSelect(final int studentID, final int courseID,final int grade){
@@ -50,16 +51,16 @@ public class CourseSelectDao {
     public int queryStudentIDByCourseSelectID(final int courseSelectID){
         final String sql = "SELECT StudentID FROM CourseSelect WHERE CourseSelectID = ?";
         Object[] params = new Object[]{courseSelectID};
-        jdbcTemplate.queryForObject(sql,params);
+        return jdbcTemplate.queryForObject(sql,params,int.class);
     }
     public int queryGradeByCourseSelectID(final int courseSelectID){
         final String sql = "SELECT Grade FROM CourseSelect WHERE CourseSelectID = ?";
         Object[] params = new Object[]{courseSelectID};
-        jdbcTemplate.queryForObject(sql,params);
+        return jdbcTemplate.queryForObject(sql,params,int.class);
     }
     public int queryTeacherIDByCourseSelectID(final int courseSelectID){
         final String sql = "SELECT TeacherID FROM CourseSelect WHERE CourseSelectID = ?";
         Object[] params = new Object[]{courseSelectID};
-        jdbcTemplate.queryForObject(sql,params);
+        return jdbcTemplate.queryForObject(sql,params,int.class);
     }
 }
