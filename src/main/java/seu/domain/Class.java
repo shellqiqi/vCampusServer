@@ -23,7 +23,6 @@ public class Class {
         this.teacherId = teacherId;
     }
 
-
     public int getClassId() {
         return classId;
     }
@@ -66,7 +65,6 @@ public class Class {
 
     @Override
     public String toString() {
-
         return "Class{" + "classId=" + classId + ", className='" + className + '\'' + ", major='" + major + '\'' + ", classSize=" + classSize + ", teacherId=" + teacherId + '}';
     }
 }
