@@ -24,5 +24,5 @@ public class StudentDaoTest {
    public void updateDormitoryIDByID() throws Exception {
 
 
-       studentDaoTest.updateDormitoryIDByID(16,0);
+       //studentDaoTest.updateDormitoryIDByID(16,0);
 }}
