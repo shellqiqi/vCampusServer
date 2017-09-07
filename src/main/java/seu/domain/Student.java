@@ -10,10 +10,7 @@ public class Student {
     private int dormitoryId;
     private int balance;
 
-    public Student() {
-        super();
-    }
-
+    public Student(){super();}
     public Student(int studentId, String studentName, int classId, int dormitoryId, int balance) {
         this.studentId = studentId;
         this.studentName = studentName;
