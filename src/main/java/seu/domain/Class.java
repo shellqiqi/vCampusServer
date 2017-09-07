@@ -10,15 +10,17 @@ public class Class {
     private int classSize;
     private int teacherId;
 
-    public Class(){
+
+    public Class() {
+        super();
     }
 
-    public Class(int classId, String name, String major, int size, int teacherId){
-         this.setClassId(classId);
-         this.setClassName(name);
-         this.setMajor(major);
-         this.setClassSize(size);
-         this.setTeacherId(teacherId);
+    public Class(int classId, String className, String major, int classSize, int teacherId) {
+        this.classId = classId;
+        this.className = className;
+        this.major = major;
+        this.classSize = classSize;
+        this.teacherId = teacherId;
     }
 
 
@@ -64,12 +66,7 @@ public class Class {
 
     @Override
     public String toString() {
-        return "Class{" +
-                "classId=" + classId +
-                ", className='" + className + '\'' +
-                ", major='" + major + '\'' +
-                ", classSize=" + classSize +
-                ", teacherId=" + teacherId +
-                '}';
+
+        return "Class{" + "classId=" + classId + ", className='" + className + '\'' + ", major='" + major + '\'' + ", classSize=" + classSize + ", teacherId=" + teacherId + '}';
     }
 }
