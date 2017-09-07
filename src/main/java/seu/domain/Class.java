@@ -10,6 +10,7 @@ public class Class {
     private int classSize;
     private int teacherId;
 
+
     public Class() {
         super();
     }

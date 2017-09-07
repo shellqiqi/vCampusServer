@@ -38,6 +38,12 @@ public class ClassDao {
         return jdbcTemplate.update(sql, params);
     }
 
+    public List<Class> queryClassByTeacherId(final int id) {
+        final String sql = "SELECT * FROM Class WHERE Class.TeacherId=?";
+        Object[] params = new Object[] {id};
+        return jdbcTemplate.query(sql, params, new ClassMapper());
+    }
+
     public List<Class> queryClassByStudentId(final int id) {
         final String sql = "SELECT * FROM Class INNER JOIN Student ON Student.ClassId=Class.ClassId WHERE Student.StudentId=?";
         Object[] params = new Object[] {id};

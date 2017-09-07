@@ -11,14 +11,17 @@ public class Student {
     private int balance;
     private String password;
 
-    public Student(){super();}
-    public Student(int studentId, String studentName, int classId, int dormitoryId, int balance,String password) {
+    public Student() {
+        super();
+    }
+
+    public Student(int studentId, String studentName, int classId, int dormitoryId, int balance, String password) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.classId = classId;
         this.dormitoryId = dormitoryId;
         this.balance = balance;
-        this.password=password;
+        this.password = password;
     }
 
     public String getPassword() { return password; }
@@ -65,11 +68,13 @@ public class Student {
         this.balance = balance;
     }
 
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
+
     @Override
     public String toString() {
         return "Student{" + "studentId=" + studentId + ", studentName='" + studentName + '\'' + ", classId=" + classId + ", dormitoryId=" + dormitoryId + ", balance=" + balance + ",password='" + password + '\'' + '}';
     }
-
-
-    }
+}
 

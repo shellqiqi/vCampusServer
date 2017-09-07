@@ -13,11 +13,11 @@ public class Teacher {
         super();
     }
 
-    public Teacher(int teacherId, String teacherName, String teacherPhoneNumber,String password) {
+    public Teacher(int teacherId, String teacherName, String teacherPhoneNumber, String password) {
         this.teacherId = teacherId;
         this.teacherName = teacherName;
         this.teacherPhoneNumber = teacherPhoneNumber;
-        this.password=password;
+        this.password = password;
     }
 
     public int getTeacherId() {

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
 import seu.domain.Course;
 import seu.domain.Student;
 import seu.domain.Class;
@@ -38,8 +39,6 @@ public class TeacherDao {
         jdbcTemplate.update(sql, params);
     }
 
-
-
     //删除教师成员
     public void deleteTeacherByID(final int id) {
         final String sql = "DELETE FROM Teacher WHERE TeacherID = ?";
@@ -58,9 +57,6 @@ public class TeacherDao {
         Object[] params = new Object[] {number};
         jdbcTemplate.update(sql, params);
     }
-
-
-
 
     //修改
     public void updateTeacherNameByID(final int id,  final String name) {
@@ -118,17 +114,6 @@ public class TeacherDao {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
     //查询Class表和Course表的内容
     @SuppressWarnings("unchecked")
     public List<Class> queryClassByTeacherID(final int id)
@@ -163,8 +148,5 @@ public class TeacherDao {
                 return new Teacher(rs.getInt("TeacherID"), rs.getString("TeacherName"), rs.getString("TeacherPhoneNumber"),rs.getString("Password"));
             }
         });
-
-
     }
-
 }

@@ -22,7 +22,6 @@ public class StudentDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
     //添加学生成员
     public void addStudent(final Student student) {
         final String sql = "INSERT INTO Student(StudentID,StudentName,ClassID,DormitoryID,Balance,Password) VALUES(?,?,?,?,?,?)";
@@ -43,9 +42,6 @@ public class StudentDao {
         jdbcTemplate.update(sql, params);
     }
 
-
-
-    //修改数据
     public void updateStudentNameByID(final int id,  final String name) {
         final String sql = "UPDATE Student SET StudentName = ? WHERE StudentID = ?";
         Object[] params = new Object[] {name, id};
@@ -75,11 +71,6 @@ public class StudentDao {
         Object[] params = new Object[] {Password, id};
         jdbcTemplate.update(sql, params);
     }
-
-
-
-
-
 
     //查询信息
     public String queryStudentNameByID(final int id) {
@@ -132,9 +123,6 @@ public class StudentDao {
         }
     }
 
-
-
-
     //关联查询
     public int queryStudentIDByClassID(final int id)
     {
@@ -174,11 +162,8 @@ public class StudentDao {
         });
     }
 
-
-
-
     @SuppressWarnings("unchecked")
-    public List<Student> queryStudentByID(final int id) {
+    public List<Student> queryUserByID(final int id) {
         final String sql = "SELECT * FROM Student WHERE StudentID = ?";
         Object[] params = new Object[] {id};
         return (List<Student>)jdbcTemplate.query(sql, params, new RowMapper() {
