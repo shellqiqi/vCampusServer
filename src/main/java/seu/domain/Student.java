@@ -4,29 +4,66 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Student {
-    private int stuentId;
+    private int studentId;
     private String studentName;
     private int classId;
     private int dormitoryId;
     private int balance;
 
-    public int getStuentId() { return stuentId; }
+    public Student() {
+        super();
+    }
 
-    public void setStuentId(int stuentId) { this.stuentId = stuentId; }
+    public Student(int studentId, String studentName, int classId, int dormitoryId, int balance) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.classId = classId;
+        this.dormitoryId = dormitoryId;
+        this.balance = balance;
+    }
 
-    public String getStudentName() { return studentName; }
+    public int getStudentId() {
+        return studentId;
+    }
 
-    public void setStudentName(String studentName) { this.studentName = studentName; }
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
 
-    public int getClassId() { return classId; }
+    public String getStudentName() {
+        return studentName;
+    }
 
-    public void setClassId(int classId) { this.classId = classId; }
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
 
-    public int getDormitoryId() { return dormitoryId; }
+    public int getClassId() {
+        return classId;
+    }
 
-    public void setDormitoryId(int dormitoryId) { this.dormitoryId = dormitoryId; }
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
 
-    public int getBalance() { return balance; }
+    public int getDormitoryId() {
+        return dormitoryId;
+    }
 
-    public void setBalance(int balance) { this.balance = balance; }
+    public void setDormitoryId(int dormitoryId) {
+        this.dormitoryId = dormitoryId;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" + "studentId=" + studentId + ", studentName='" + studentName + '\'' + ", classId=" + classId + ", dormitoryId=" + dormitoryId + ", balance=" + balance + '}';
+    }
 }
