@@ -122,4 +122,5 @@ local.properties
 .worksheet
 
 target/
-vCampus.accdb
+*.accdb
+*.laccdb
