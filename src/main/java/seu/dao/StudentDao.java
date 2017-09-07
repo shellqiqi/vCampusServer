@@ -23,29 +23,29 @@ public class StudentDao {
     }
 
     //添加学生成员
-    public void addStudent(final Student student) {
+    public int insertStudent(final Student student) {
         final String sql = "INSERT INTO Student(StudentID,StudentName,ClassID,DormitoryID,Balance,Password) VALUES(?,?,?,?,?,?)";
         Object[] params = new Object[] {student.getStudentId(),student.getStudentName(),student.getClassId(),student.getDormitoryId(),student.getBalance(),student.getPassword()};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
-    public void addStudentr(final int StudentID,final String StudentName,final int ClassID,final int DormitoryID,final int Balance,final int Password) {
+    public int insertStudentr(final int StudentID,final String StudentName,final int ClassID,final int DormitoryID,final int Balance,final int Password) {
         final String sql =  "INSERT INTO Student( StudentID,StudentName, ClassID,DormitoryID,Balance,Password) VALUES(?,?,?,?,?,?)";
         Object[] params = new Object[] { StudentID, StudentName,ClassID,DormitoryID,Balance,Password};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
     //删除学生成员
-    public void deleteStudentByID(final int id) {
+    public int deleteStudentByID(final int id) {
         final String sql = "DELETE FROM Student WHERE StudentID = ?";
         Object[] params = new Object[] {id};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
-    public void updateStudentNameByID(final int id,  final String name) {
+    public int updateStudentNameByID(final int id,  final String name) {
         final String sql = "UPDATE Student SET StudentName = ? WHERE StudentID = ?";
         Object[] params = new Object[] {name, id};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
     public void updateClassIDByID(final int id, final int classId) {
