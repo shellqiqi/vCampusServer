@@ -9,14 +9,19 @@ public class Student {
     private int classId;
     private int dormitoryId;
     private int balance;
+    private String password;
 
-    public Student(){super();}
-    public Student(int studentId, String studentName, int classId, int dormitoryId, int balance) {
+    public Student() {
+        super();
+    }
+
+    public Student(int studentId, String studentName, int classId, int dormitoryId, int balance, String password) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.classId = classId;
         this.dormitoryId = dormitoryId;
         this.balance = balance;
+        this.password = password;
     }
 
     public int getStudentId() {
@@ -58,6 +63,10 @@ public class Student {
     public void setBalance(int balance) {
         this.balance = balance;
     }
+
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
 
     @Override
     public String toString() {

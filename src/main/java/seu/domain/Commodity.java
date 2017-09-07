@@ -20,6 +20,7 @@ public class Commodity {
         this.setInventory(inventory);
     }
 
+
     public int getCommodityId() {
         return commodityId;
     }

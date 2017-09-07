@@ -10,6 +10,7 @@ public class Course {
     private int period;
     private int teacherId;
 
+
     public Course() {
         super();
     }

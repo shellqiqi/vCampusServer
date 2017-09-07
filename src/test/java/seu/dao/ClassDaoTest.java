@@ -20,7 +20,7 @@ public class ClassDaoTest {
     @Test
     public void insertClassTest() throws Exception {
         queryAllTest();
-        Class clas = new Class(90155, "计算机五班", "计算机", 60, 1234);
+        Class clas = new Class(90155, "计算机五班", "计算机", 60, 3);
         System.out.println(classDao.insertClass(clas));
         queryAllTest();
     }
@@ -28,16 +28,16 @@ public class ClassDaoTest {
     @Test
     public void deleteClassByIdTest() throws Exception {
         queryAllTest();
-        System.out.println(classDao.deleteClassById(90155));
+        System.out.println(classDao.deleteClassById(90154));
 //        System.out.println(classDao.deleteClassById(90153));
-        System.out.println(classDao.deleteClassById(12345));
+        System.out.println(classDao.deleteClassById(90153));
         queryAllTest();
     }
 
     @Test
     public void updateClassByIdTest() throws Exception {
         queryAllTest();
-        System.out.println(classDao.updateClassById(90155, new Class(90155, "计算机五班", "计算机科学与技术", 60, 1234)));
+        System.out.println(classDao.updateClassById(90153, new Class(90153, "计算机五班", "计算机科学与技术", 60, 1)));
         queryAllTest();
     }
 
@@ -48,7 +48,7 @@ public class ClassDaoTest {
 
     @Test
     public void queryClassByStudentIdTest() throws Exception {
-        System.out.println(classDao.queryClassByStudentId(16));
+        System.out.println(classDao.queryClassByStudentId(2));
     }
 
     @Test
