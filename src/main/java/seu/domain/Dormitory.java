@@ -7,33 +7,11 @@ public class Dormitory {
     private int dormitoryId;
     private int score;
 
-    public Dormitory() {
-        super();
-    }
+    public int getDormitoryId() { return dormitoryId; }
 
-    public Dormitory(int dormitoryId, int score) {
-        this.dormitoryId = dormitoryId;
-        this.score = score;
-    }
+    public void setDormitoryId(int dormitoryId) { this.dormitoryId = dormitoryId; }
 
-    public int getDormitoryId() {
-        return dormitoryId;
-    }
+    public int getScore() { return score; }
 
-    public void setDormitoryId(int dormitoryId) {
-        this.dormitoryId = dormitoryId;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    @Override
-    public String toString() {
-        return "Dormitory{" + "dormitoryId=" + dormitoryId + ", score=" + score + '}';
-    }
+    public void setScore(int score) { this.score = score; }
 }

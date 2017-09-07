@@ -8,42 +8,15 @@ public class Teacher {
     private String teacherName;
     private String teacherPhoneNumber;
 
-    public Teacher() {
-        super();
-    }
+    public int getTeacherId() { return teacherId; }
 
-    public Teacher(int teacherId, String teacherName, String teacherPhoneNumber) {
-        this.teacherId = teacherId;
-        this.teacherName = teacherName;
-        this.teacherPhoneNumber = teacherPhoneNumber;
-    }
+    public void setTeacherId(int teacherId) { this.teacherId = teacherId; }
 
-    public int getTeacherId() {
-        return teacherId;
-    }
+    public String getTeacherName() { return teacherName; }
 
-    public void setTeacherId(int teacherId) {
-        this.teacherId = teacherId;
-    }
+    public void setTeacherName(String teacherName) { this.teacherName = teacherName; }
 
-    public String getTeacherName() {
-        return teacherName;
-    }
+    public String getTeacherPhoneNumber() { return teacherPhoneNumber; }
 
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
-    }
-
-    public String getTeacherPhoneNumber() {
-        return teacherPhoneNumber;
-    }
-
-    public void setTeacherPhoneNumber(String teacherPhoneNumber) {
-        this.teacherPhoneNumber = teacherPhoneNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "Teacher{" + "teacherId=" + teacherId + ", teacherName='" + teacherName + '\'' + ", teacherPhoneNumber='" + teacherPhoneNumber + '\'' + '}';
-    }
+    public void setTeacherPhoneNumber(String teacherPhoneNumber) { this.teacherPhoneNumber = teacherPhoneNumber; }
 }

@@ -10,60 +10,23 @@ public class Student {
     private int dormitoryId;
     private int balance;
 
-    public Student() {
-        super();
-    }
+    public int getStuentId() { return studentId; }
 
-    public Student(int studentId, String studentName, int classId, int dormitoryId, int balance) {
-        this.studentId = studentId;
-        this.studentName = studentName;
-        this.classId = classId;
-        this.dormitoryId = dormitoryId;
-        this.balance = balance;
-    }
+    public void setStuentId(int stuentId) { this.studentId = stuentId; }
 
-    public int getStudentId() {
-        return studentId;
-    }
+    public String getStudentName() { return studentName; }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
+    public void setStudentName(String studentName) { this.studentName = studentName; }
 
-    public String getStudentName() {
-        return studentName;
-    }
+    public int getClassId() { return classId; }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
+    public void setClassId(int classId) { this.classId = classId; }
 
-    public int getClassId() {
-        return classId;
-    }
+    public int getDormitoryId() { return dormitoryId; }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
-    }
+    public void setDormitoryId(int dormitoryId) { this.dormitoryId = dormitoryId; }
 
-    public int getDormitoryId() {
-        return dormitoryId;
-    }
+    public int getBalance() { return balance; }
 
-    public void setDormitoryId(int dormitoryId) {
-        this.dormitoryId = dormitoryId;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" + "studentId=" + studentId + ", studentName='" + studentName + '\'' + ", classId=" + classId + ", dormitoryId=" + dormitoryId + ", balance=" + balance + '}';
-    }
+    public void setBalance(int balance) { this.balance = balance; }
 }
