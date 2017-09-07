@@ -20,13 +20,13 @@ public class CommodityDao {//TODO: Create Test
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public int addCommodity(final Commodity commodity){
+    public int insertCommodity(final Commodity commodity){
         final String sql = "INSERT INTO Commodity(CommodityID,CommodityName,Prize,Inventory) VALUES(?,?,?,?)";
         Object[] params = new Object[] {commodity.getCommodityId(), commodity.getCommodityName(),commodity.getPrize(),commodity.getInventory()};
         return jdbcTemplate.update(sql, params );
     }
 
-    public int addCommodity(final int id, final String name, final int prize, final int inventory ){
+    public int insertCommodity(final int id, final String name, final int prize, final int inventory ){
         final String sql = "INSERT INTO Commodity(CommodityID,CommodityName,Prize,Inventory) VALUES(?,?,?,?)";
         Object[] params = new Object[] {id, name,prize,inventory};
         return jdbcTemplate.update(sql, params);
@@ -60,6 +60,16 @@ public class CommodityDao {//TODO: Create Test
         final String sql = "SELECT * FROM Commodity WHERE CommodityID = ?";
         Object[] params = new Object[] {id};
         return (List<Commodity>)jdbcTemplate.query(sql, params, new RowMapper() {
+            public Commodity mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new Commodity(rs.getInt("CommodityID"), rs.getString("CommodityName")
+                        ,rs.getInt("Prize"), rs.getInt("Inventory"));
+            }
+        });
+    }
+
+    public List<Commodity> queryAll(){
+        final String sql = "SELECT * FROM Commodity" ;
+        return (List<Commodity>)jdbcTemplate.query(sql, new RowMapper() {
             public Commodity mapRow(ResultSet rs, int rowNum) throws SQLException {
                 return new Commodity(rs.getInt("CommodityID"), rs.getString("CommodityName")
                         ,rs.getInt("Prize"), rs.getInt("Inventory"));

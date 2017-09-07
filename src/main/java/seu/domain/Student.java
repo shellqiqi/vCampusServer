@@ -10,7 +10,7 @@ public class Student {
     private int dormitoryId;
     private int balance;
     private String password;
-    
+
     public Student() {
         super();
     }
