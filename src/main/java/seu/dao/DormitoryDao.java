@@ -21,28 +21,28 @@ public class DormitoryDao {
     }
 
 
-    public void addDormitory(final Dormitory dormitory) {
+    public int insertDormitory(final Dormitory dormitory) {
         final String sql = "INSERT INTO Dormitory(DormitoryId,Score) VALUES(?,?)";
         Object[] params = new Object[]{dormitory.getDormitoryId(), dormitory.getScore()};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
-    public void addDormitory(final int DormitoryID, final int Score) {
+    public int insertDormitory(final int DormitoryID, final int Score) {
         final String sql = "INSERT INTO Dormitory(DormitoryId,Score) VALUES(?,?)";
         Object[] params = new Object[]{DormitoryID, Score};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
-    public void deleteDormitoryByID(final int DormitoryID) {
-        final String sql = "DELETE FROM Dormitory WHERE ID = ?";
+    public int deleteDormitoryByID(final int DormitoryID) {
+        final String sql = "DELETE FROM Dormitory WHERE DormitoryID = ?";
         Object[] params = new Object[]{DormitoryID};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
-    public void updateScoreByID(final int DormitoryID, final int Score) {
+    public int updateScoreByID(final int DormitoryID, final int Score) {
         final String sql = "UPDATE Dormitory SET Score = ? WHERE DormitoryId = ?";
         Object[] params = new Object[]{Score, DormitoryID};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
     public String queryScoreByDormitoryID(final int DormitoryID) {
@@ -52,13 +52,19 @@ public class DormitoryDao {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Dormitory> queryDormitoryByDormitoryID(final String DormitoryId) {
+    public Dormitory queryDormitoryByDormitoryID(final String DormitoryId) {
         final String sql = "SELECT * FROM Dormitory WHERE DorymitoryId = ?";
         Object[] params = new Object[] {DormitoryId};
-        return (List<Dormitory>)jdbcTemplate.query(sql, params, new RowMapper() {
-            public Dormitory mapRow(ResultSet rs, int rowNum) throws SQLException {
-                return new Dormitory(rs.getInt("DormitoryId"), rs.getInt("Score"));
-            }
-        });
+        return jdbcTemplate.queryForObject(sql, params ,new DormitoryMapper());
+    }
+
+    private static final class DormitoryMapper implements RowMapper<Dormitory> {
+        @Override
+        public Dormitory mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new Dormitory(
+                    rs.getInt("DormitoryID"),
+                    rs.getInt("Score")
+            );
+        }
     }
 }

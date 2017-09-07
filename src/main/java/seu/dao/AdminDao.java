@@ -45,13 +45,24 @@ public class AdminDao {
         return jdbcTemplate.update(sql, params);
     }
 
+    public Admin queryAdminById(final int id){
+        final String sql = "SELECT * FROM Admin WHERE AdminID = ?";
+        Object[] params = new Object[] {id};
+        return jdbcTemplate.queryForObject(sql, params ,new AdminMapper());
+    }
+
     public List<Admin> queryAll(){
         final String sql = "SELECT * FROM Admin" ;
-        return (List<Admin>)jdbcTemplate.query(sql, new RowMapper() {
-            public Admin mapRow(ResultSet rs, int rowNum) throws SQLException {
-                return new Admin(rs.getInt("AdminID"), rs.getString("Password")
-                );
-            }
-        });
+        return (List<Admin>)jdbcTemplate.query(sql, new AdminMapper());
+    }
+
+    private static final class AdminMapper implements RowMapper<Admin> {
+        @Override
+        public Admin mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new Admin(
+                    rs.getInt("AdminID"),
+                    rs.getString("Password")
+            );
+        }
     }
 }

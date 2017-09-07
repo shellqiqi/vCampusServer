@@ -22,7 +22,7 @@ public class CourseDao {
     }
 
     public int insertCourse(final Course course){
-        final String sql = "INSERT INTO Course(courseId, courseName, credit, period, teacherId) VALUES(?,?,?,?,?)";
+        final String sql = "INSERT INTO Course(CourseID, CourseName, Credit, Period, TeacherID) VALUES(?,?,?,?,?)";
         Object[] params = new Object[] {course.getCourseId(), course.getCourseName(), course.getCredit(), course.getPeriod(), course.getTeacherId()};
         return jdbcTemplate.update(sql, params);
     }
@@ -33,7 +33,7 @@ public class CourseDao {
         return jdbcTemplate.update(sql, params);
     }
 
-    public int deleteCourseByID(final int courseId){
+    public int deleteCourseById(final int courseId){
         final String sql = "DELETE FROM Course WHERE CourseId = ?";
         Object[] params = new Object[] {courseId};
         return jdbcTemplate.update(sql, params);
@@ -45,13 +45,13 @@ public class CourseDao {
         return jdbcTemplate.update(sql, params);
     }
 
-    public int updateCourseByID(final Course course, final int id){
+    public int updateCourseById(final int id, final Course course){
         final String sql = "UPDATE Course SET CourseName = ? ,Credit = ?,Period = ?,TeacherId = ? WHERE CourseId = ?";
         Object[] params = new Object[] {course. getCourseName(), course.getCredit(), course.getPeriod(), course.getTeacherId(), id};
         return jdbcTemplate.update(sql, params);
     }
 
-    public String queryCourseNameByID(final int courseID){
+    public String queryCourseNameById(final int courseID){
         final String sql = "SELECT CourseName FROM Course WHERE CourseId = ?";
         Object[] params = new Object[] {courseID};
         return jdbcTemplate.queryForObject(sql, params, String.class);
@@ -66,8 +66,7 @@ public class CourseDao {
     public List<Course> queryCourseByID(final int id){
        final String sql = "SELECT *  FROM Course WHERE CourseId = ?";
        Object[] params = new Object[] {id};
-       List course = jdbcTemplate.query(sql, params, new CourseMapper());
-       return course;
+       return jdbcTemplate.query(sql, params, new CourseMapper());
     }
 
     public List<Course> queryAll(){
@@ -75,14 +74,15 @@ public class CourseDao {
         return jdbcTemplate.query(sql, new CourseMapper());
     }
 
-    protected class CourseMapper implements RowMapper{
-       public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+    private static final class CourseMapper implements RowMapper<Course>{
+        @Override
+        public Course mapRow(ResultSet rs, int rowNum) throws SQLException {
            Course course = new Course();
-           course.setCourseId(rs.getInt("courseId"));
-           course.setCourseName(rs.getString("courseName"));
-           course.setCredit(rs.getInt("credit"));
-           course.setPeriod(rs.getInt("period"));
-           course.setTeacherId(rs.getInt("teacherId"));
+           course.setCourseId(rs.getInt("CourseID"));
+           course.setCourseName(rs.getString("CourseName"));
+           course.setCredit(rs.getInt("Credit"));
+           course.setPeriod(rs.getInt("Period"));
+           course.setTeacherId(rs.getInt("TeacherID"));
            return course;
        }
 
