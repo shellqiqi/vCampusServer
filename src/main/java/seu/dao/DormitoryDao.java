@@ -61,4 +61,19 @@ public class DormitoryDao {
             }
         });
     }
+
+    public List<Dormitory> queryAll() {
+        final String sql = "SELECT * FROM Dormitory";
+        return jdbcTemplate.query(sql, new DormitoryMapper());
+    }
+
+    private static final class DormitoryMapper implements RowMapper<Dormitory> {
+        @Override
+        public Dormitory mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new Dormitory(
+                    rs.getInt("DormitoryId"),
+                    rs.getInt("Score"));
+            );
+        }
+    }
 }
