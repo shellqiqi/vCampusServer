@@ -44,10 +44,10 @@ public class ClassDao {
         return jdbcTemplate.query(sql, params, new ClassMapper());
     }
 
-    public List<Class> queryClassByStudentId(final int id) {
+    public Class queryClassByStudentId(final int id) {
         final String sql = "SELECT * FROM Class INNER JOIN Student ON Student.ClassId=Class.ClassId WHERE Student.StudentId=?";
         Object[] params = new Object[] {id};
-        return jdbcTemplate.query(sql, params, new ClassMapper());
+        return jdbcTemplate.queryForObject(sql, params, new ClassMapper());
     }
 
     public Class queryClassById(final int id) {

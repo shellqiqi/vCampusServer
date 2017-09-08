@@ -1,52 +1,60 @@
 package seu.dao;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.junit4.SpringRunner;
+import seu.config.ApplicationContextConfig;
+import seu.domain.Course;
+import seu.domain.CourseSelect;
 
 import static org.junit.Assert.*;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@Import(ApplicationContextConfig.class)
 public class CourseSelectDaoTest {
+    @Autowired
+    CourseSelectDao CSD;
+
     @Test
-    public void setJdbcTemplate() throws Exception {
+    public void insertCourseSelectTest() throws Exception {
+        queryAllTest();
+        CourseSelect courseSelect = new CourseSelect(10,4,3,0);
+        System.out.println(CSD.insertCourseSelect(courseSelect));
+        queryAllTest();
     }
 
     @Test
-    public void insertCourseSelect() throws Exception {
+    public void insertCourseSelectTest1() throws Exception {
+        queryAllTest();
+        System.out.println(CSD.insertCourseSelect(4,4));
+        queryAllTest();
     }
 
     @Test
-    public void insertCourseSelect1() throws Exception {
+    public void deleteCourseSelectByCourseIDAndStudentIDTest() throws Exception {
+        queryAllTest();
+        System.out.println(CSD.deleteCourseSelectByCourseIDAndStudentID(3,4));
+        queryAllTest();
     }
 
     @Test
-    public void deleteCourseSelectByCourseSelectID() throws Exception {
+    public void updateGradeByCourseIDAndStudentIDTest() throws Exception {
+        queryAllTest();
+        System.out.println(CSD.updateGradeByCourseIDAndStudentID(1,1,90));
+        queryAllTest();
     }
 
     @Test
-    public void updateStudentIDByCourseSelectID() throws Exception {
+    public void queryGradeByCourseIDAndStudentIDTest() throws Exception {
+        System.out.println(CSD.queryGradeByCourseIDAndStudentID(3,3));
     }
 
     @Test
-    public void updateTeacherIDByCourseSelectID() throws Exception {
+    public void queryAllTest() throws Exception {
+        System.out.println(CSD.queryAll().toString());
     }
-
-    @Test
-    public void updateGradeByCourseSelectID() throws Exception {
-    }
-
-    @Test
-    public void queryStudentIDByCourseSelectID() throws Exception {
-    }
-
-    @Test
-    public void queryGradeByCourseSelectID() throws Exception {
-    }
-
-    @Test
-    public void queryTeacherIDByCourseSelectID() throws Exception {
-    }
-
-    @Test
-    public void queryAll() throws Exception {
-    }
-
 }
