@@ -4,22 +4,22 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Admin {
-    private int AdminId;
+    private int adminId;
     private String password;
 
     public Admin(){super();}
 
     public Admin(int Id, String passwd ){
-        this.AdminId = Id;
+        this.adminId = Id;
         this.password = passwd;
     }
 
     public int getAdminId() {
-        return AdminId;
+        return adminId;
     }
 
     public void setAdminId(int adminId) {
-        AdminId = adminId;
+        adminId = adminId;
     }
 
     public String getPassword() {
