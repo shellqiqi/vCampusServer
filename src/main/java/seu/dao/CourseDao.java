@@ -21,14 +21,14 @@ public class CourseDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public int insertCourse(final Course course){
-        final String sql = "INSERT INTO Course(CourseID, CourseName, Credit, Period, TeacherID) VALUES(?,?,?,?,?)";
+    public int insertCourse(final Course course) {
+        final String sql = "INSERT INTO Course(CourseID, CourseName, Credit, Period, TeacherID) VALUES(?,?,?,?,?)"
         Object[] params = new Object[] {course.getCourseId(), course.getCourseName(), course.getCredit(), course.getPeriod(), course.getTeacherId()};
         return jdbcTemplate.update(sql, params);
     }
 
     public int insertCourse(final int courseId, final String courseName, final int credit, final int period, final int teacherId) {
-        final String sql = "INSERT INTO Course(CourseId,CourseName,Credit,Period,TeacherId) VALUES(?,?,?,?,?)";
+        final String sql = "INSERT INTO Course(CourseId,CourseName,Credit,Period,TeacherID) VALUES(?,?,?,?,?)";
         Object[] params = new Object[] {courseId,courseName,credit,period,teacherId};
         return jdbcTemplate.update(sql, params);
     }

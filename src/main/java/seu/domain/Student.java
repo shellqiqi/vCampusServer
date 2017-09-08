@@ -24,7 +24,6 @@ public class Student {
         this.password = password;
     }
 
-
     public int getStudentId() {
         return studentId;
     }
