@@ -20,48 +20,41 @@ public class CourseSelectDaoTest {
     CourseSelectDao CSD;
 
     @Test
-    public void insertCourseSelect() throws Exception {
-        queryAll();
-        CourseSelect courseSelect = new CourseSelect(4,1,1,1);
+    public void insertCourseSelectTest() throws Exception {
+        queryAllTest();
+        CourseSelect courseSelect = new CourseSelect(10,4,3,0);
         System.out.println(CSD.insertCourseSelect(courseSelect));
-        queryAll();
+        queryAllTest();
     }
 
     @Test
-    public void insertCourseSelect1() throws Exception {
-        queryAll();
-        System.out.println(CSD.insertCourseSelect(1,1,0));
-        queryAll();
+    public void insertCourseSelectTest1() throws Exception {
+        queryAllTest();
+        System.out.println(CSD.insertCourseSelect(4,4));
+        queryAllTest();
     }
 
     @Test
-    public void deleteCourseSelectByCourseIDAndStudentID() throws Exception {
-        queryAll();
-        System.out.println(CSD.deleteCourseSelectByCourseIDAndStudentID(1,1));
-        queryAll();
+    public void deleteCourseSelectByCourseIDAndStudentIDTest() throws Exception {
+        queryAllTest();
+        System.out.println(CSD.deleteCourseSelectByCourseIDAndStudentID(3,4));
+        queryAllTest();
     }
 
     @Test
-    public void updateGradeByCourseIDAndStudentID() throws Exception {
-        queryAll();
-        System.out.println(CSD.updateGradeByCourseIDAndStudentID(1,1,89));
-        queryAll();
+    public void updateGradeByCourseIDAndStudentIDTest() throws Exception {
+        queryAllTest();
+        System.out.println(CSD.updateGradeByCourseIDAndStudentID(1,1,90));
+        queryAllTest();
     }
 
     @Test
-    public void queryStudentIDByCourseID() throws Exception {
-        System.out.println(CSD.queryStudentIDByCourseID(1));
+    public void queryGradeByCourseIDAndStudentIDTest() throws Exception {
+        System.out.println(CSD.queryGradeByCourseIDAndStudentID(3,3));
     }
 
     @Test
-    public void queryGradeByCourseIDAndStudentID() throws Exception {
-        System.out.println(CSD.queryGradeByCourseIDAndStudentID(1,1));
-    }
-
-    @Test
-    public void queryAll() throws Exception {
+    public void queryAllTest() throws Exception {
         System.out.println(CSD.queryAll().toString());
     }
-
-
 }

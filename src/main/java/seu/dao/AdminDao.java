@@ -41,7 +41,7 @@ public class AdminDao {
 
     public int updateAdminPasswordById(final int id, final String password){
         final String sql = "UPDATE Admin SET Password = ? WHERE AdminID = ?";
-        Object[] params = new Object[] {id, password};
+        Object[] params = new Object[] {password,id};
         return jdbcTemplate.update(sql, params);
     }
 
@@ -53,7 +53,7 @@ public class AdminDao {
 
     public List<Admin> queryAll(){
         final String sql = "SELECT * FROM Admin" ;
-        return (List<Admin>)jdbcTemplate.query(sql, new AdminMapper());
+        return jdbcTemplate.query(sql, new AdminMapper());
     }
 
     private static final class AdminMapper implements RowMapper<Admin> {

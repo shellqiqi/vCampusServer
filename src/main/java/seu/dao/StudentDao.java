@@ -93,8 +93,8 @@ public class StudentDao {
     }
 
     public Student queryStudentByBookId(final int bookId){
-        final String sql = "SELECT * FROM Student INNER JOIN Library ON Library.StudentId = Student.StudentId ";
-               // + "WHERE Library.BookId = ?";
+        final String sql = "SELECT * FROM Student INNER JOIN Library ON Library.StudentId = Student.StudentId "
+               + "WHERE Library.BookId = ?";
         Object[] params = new Object[] {bookId};
         return jdbcTemplate.queryForObject(sql, params, new StudentMapper());
     }

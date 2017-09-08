@@ -9,6 +9,7 @@ import seu.domain.Library;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Date;
 
 @Repository
 public class LibraryDao {
@@ -21,38 +22,24 @@ public class LibraryDao {
     }
 
     public int insertBook(final Library book) {
-        final String sql = "INSERT INTO Library(BookName,BookId) VALUES(?,?)";
-        Object[] params = new Object[]{book.getBookName(), book.getBookId()};
+        final String sql = "INSERT INTO Library(BookId,BookName,StudentId,StartDate) VALUES(?,?,?,?)";
+        Object[] params = new Object[]{book.getBookId(),book.getBookName(),book.getStudentId(),book.getStartDate()};
         return jdbcTemplate.update(sql, params);
     }
 
-    public int deleteBookById(final int id) {
+    public int deleteBookByBookId(final int id) {
         final String sql = "DELETE FROM Library WHERE BookId = ?";
         Object[] params = new Object[]{id};
         return jdbcTemplate.update(sql, params);
     }
 
-    public int deleteBookByName(final String name) {
-        final String sql = "DELETE FROM Library WHERE BookName = ?";
-        Object[] params = new Object[]{name};
+    public int updateBookByBookId(final int bookId, final int studentId,final Date date){
+        final String sql = "UPDATE Library SET StudentID = ? , StartDate = ? WHERE BookId = ?";
+        Object[] params = new Object[]{studentId,date,bookId};
         return jdbcTemplate.update(sql, params);
     }
 
-    public int updateBookById(final int bookId, final int studentId){
-        final String sql = "UPDATE Library SET StudentID = ? WHERE BookId = ?";
-        Object[] params = new Object[]{studentId,bookId};
-        return jdbcTemplate.update(sql, params);
-    }
-
-    public int updateBookNameById(final int id, final String name) {
-        final String sql = "UPDATE Library SET Name = ? WHERE BookId = ?";
-        Object[] params = new Object[]{name, id};
-        return jdbcTemplate.update(sql, params);
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public Library queryBookById(final int id) {
+    public Library queryBookByBookId(final int id) {
         final String sql = "SELECT * FROM Library WHERE BookId = ?";
         Object[] params = new Object[]{id};
         return jdbcTemplate.queryForObject(sql, params, new LibraryMapper());
@@ -76,8 +63,7 @@ public class LibraryDao {
                     rs.getInt("bookId"),
                     rs.getString("bookName"),
                     rs.getInt("studentId"),
-                    rs.getDate("period"),
-                    rs.getDate("returnDate")
+                    rs.getDate("startDate")
             );
         }
     }
