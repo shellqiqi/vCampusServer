@@ -20,35 +20,47 @@ public class LibraryDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void addBook(final Library book) {
-        final String sql = "INSERT INTO book(name,Id) VALUES(?,?)";
+    public int insertBook(final Library book) {
+        final String sql = "INSERT INTO Library(BookName,BookId) VALUES(?,?)";
         Object[] params = new Object[]{book.getBookName(), book.getBookId()};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
-    public void deleteLibraryById(final int id) {
-        final String sql = "DELETE FROM Library WHERE Id = ?";
+    public int deleteBookById(final int id) {
+        final String sql = "DELETE FROM Library WHERE BookId = ?";
         Object[] params = new Object[]{id};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
-    public void deleteLibraryByName(final String name) {
-        final String sql = "DELETE FROM Library WHERE Name = ?";
+    public int deleteBookByName(final String name) {
+        final String sql = "DELETE FROM Library WHERE BookName = ?";
         Object[] params = new Object[]{name};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
-    public void updateBookNameById(final int id, final String name) {
-        final String sql = "UPDATE Book SET Name = ? WHERE Id = ?";
+    public int updateBookById(final int bookId, final int studentId){
+        final String sql = "UPDATE Library SET StudentID = ? WHERE BookId = ?";
+        Object[] params = new Object[]{studentId,bookId};
+        return jdbcTemplate.update(sql, params);
+    }
+
+    public int updateBookNameById(final int id, final String name) {
+        final String sql = "UPDATE Library SET Name = ? WHERE BookId = ?";
         Object[] params = new Object[]{name, id};
-        jdbcTemplate.update(sql, params);
+        return jdbcTemplate.update(sql, params);
     }
 
 
     @SuppressWarnings("unchecked")
-    public List<Library> queryStudentBookById(final int id) {
-        final String sql = "SELECT The Book Condition Of Student WHERE Id = ?";
+    public Library queryBookById(final int id) {
+        final String sql = "SELECT * FROM Library WHERE BookId = ?";
         Object[] params = new Object[]{id};
+        return jdbcTemplate.queryForObject(sql, params, new LibraryMapper());
+    }
+
+    public List<Library> queryBooksByStudentId(final int studentId){
+        final String sql = "SELECT * FROM Library WHERE StudentID = ?";
+        Object[] params = new Object[]{studentId};
         return jdbcTemplate.query(sql, params, new LibraryMapper());
     }
 
