@@ -38,8 +38,8 @@ public class LibraryService {
     }
 
 
-    public List<Library> queryStudentBookById(final int id) {
-        return libraryuser.queryStudentBookById(id);
+    public List<Library> queryBooksByStudentId(final int id) {
+        return libraryuser.queryBooksByStudentId(id);
     }
 
     public List<Library> queryAll() {

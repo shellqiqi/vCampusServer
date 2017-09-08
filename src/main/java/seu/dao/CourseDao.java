@@ -22,7 +22,7 @@ public class CourseDao {
     }
 
     public int insertCourse(final Course course) {
-        final String sql = "INSERT INTO Course(CourseID, CourseName, Credit, Period, TeacherID) VALUES(?,?,?,?,?)"
+        final String sql = "INSERT INTO Course(CourseID, CourseName, Credit, Period, TeacherID) VALUES(?,?,?,?,?)";
         Object[] params = new Object[] {course.getCourseId(), course.getCourseName(), course.getCredit(), course.getPeriod(), course.getTeacherId()};
         return jdbcTemplate.update(sql, params);
     }

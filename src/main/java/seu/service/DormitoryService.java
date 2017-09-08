@@ -15,6 +15,6 @@ public class DormitoryService {
     }
 
     public int addDormitory(final Dormitory dormitory) {
-        return dormitoryuser.addDormitory(dormitory);
+        return dormitoryuser.insertDormitory(dormitory);
     }
 }
