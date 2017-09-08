@@ -13,53 +13,50 @@ import seu.domain.Class;
 @SpringBootTest
 @Import(ApplicationContextConfig.class)
 public class ClassDaoTest {
-
     @Autowired
-    ClassDao classDao;
+    ClassDao classDaoItem;
 
     @Test
     public void insertClassTest() throws Exception {
         queryAllTest();
-        Class clas = new Class(90155, "计算机五班", "计算机", 60, 3);
-        System.out.println(classDao.insertClass(clas));
+        Class clss = new Class(90155,"计算机5班","CS",30,2);
+        System.out.println(classDaoItem.insertClass(clss));
         queryAllTest();
     }
 
     @Test
     public void deleteClassByIdTest() throws Exception {
         queryAllTest();
-        System.out.println(classDao.deleteClassById(90154));
-//        System.out.println(classDao.deleteClassById(90153));
-        System.out.println(classDao.deleteClassById(90153));
+        System.out.println(classDaoItem.deleteClassById(90155));
         queryAllTest();
     }
 
     @Test
     public void updateClassByIdTest() throws Exception {
         queryAllTest();
-        System.out.println(classDao.updateClassById(90153, new Class(90153, "计算机五班", "计算机科学与技术", 60, 1)));
+        Class clss = new Class(90152,"2 class","Cs",20,1);
+        System.out.println(classDaoItem.updateClassById(90152,clss));
         queryAllTest();
     }
 
     @Test
     public void queryClassByTeacherIdTest() throws Exception {
-        System.out.println(classDao.queryClassByTeacherId(1234));
+        System.out.println(classDaoItem.queryClassByTeacherId(1));
     }
 
     @Test
     public void queryClassByStudentIdTest() throws Exception {
-        System.out.println(classDao.queryClassByStudentId(2));
+        System.out.println(classDaoItem.queryClassByStudentId(2));
     }
 
     @Test
     public void queryClassByIdTest() throws Exception {
-        System.out.println(classDao.queryClassById(90153));
-//        System.out.println(classDao.queryClassById(12345));
+        System.out.println(classDaoItem.queryClassById(90153));
     }
 
     @Test
     public void queryAllTest() throws Exception {
-        System.out.println(classDao.queryAll().toString());
+        System.out.println(classDaoItem.queryAll().toString());
     }
 
 }

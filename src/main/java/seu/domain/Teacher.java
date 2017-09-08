@@ -6,14 +6,14 @@ import org.springframework.stereotype.Component;
 public class Teacher {
     private int teacherId;
     private String teacherName;
-    private String teacherPhoneNumber;
+    private int teacherPhoneNumber;
     private String password;
 
     public Teacher() {
         super();
     }
 
-    public Teacher(int teacherId, String teacherName, String teacherPhoneNumber, String password) {
+    public Teacher(int teacherId, String teacherName, int teacherPhoneNumber, String password) {
         this.teacherId = teacherId;
         this.teacherName = teacherName;
         this.teacherPhoneNumber = teacherPhoneNumber;
@@ -36,11 +36,11 @@ public class Teacher {
         this.teacherName = teacherName;
     }
 
-    public String getTeacherPhoneNumber() {
+    public int getTeacherPhoneNumber() {
         return teacherPhoneNumber;
     }
 
-    public void setTeacherPhoneNumber(String teacherPhoneNumber) {
+    public void setTeacherPhoneNumber(int teacherPhoneNumber) {
         this.teacherPhoneNumber = teacherPhoneNumber;
     }
 
