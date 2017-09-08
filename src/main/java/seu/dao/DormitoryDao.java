@@ -72,7 +72,7 @@ public class DormitoryDao {
         public Dormitory mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new Dormitory(
                     rs.getInt("DormitoryId"),
-                    rs.getInt("Score"));
+                    rs.getInt("Score")
             );
         }
     }

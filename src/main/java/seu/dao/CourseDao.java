@@ -22,13 +22,13 @@ public class CourseDao {
     }
 
     public int insertCourse(final Course course){
-        final String sql = "INSERT INTO Course(courseId, courseName, credit, period, teacherId) VALUES(?,?,?,?,?)";
+        final String sql = "INSERT INTO Course(CourseId, CourseName, Credit, Period, TeacherID) VALUES(?,?,?,?,?)";
         Object[] params = new Object[] {course.getCourseId(), course.getCourseName(), course.getCredit(), course.getPeriod(), course.getTeacherId()};
         return jdbcTemplate.update(sql, params);
     }
 
     public int insertCourse(final int courseId, final String courseName, final int credit, final int period, final int teacherId) {
-        final String sql = "INSERT INTO Course(CourseId,CourseName,Credit,Period,TeacherId) VALUES(?,?,?,?,?)";
+        final String sql = "INSERT INTO Course(CourseId,CourseName,Credit,Period,TeacherID) VALUES(?,?,?,?,?)";
         Object[] params = new Object[] {courseId,courseName,credit,period,teacherId};
         return jdbcTemplate.update(sql, params);
     }
@@ -66,8 +66,7 @@ public class CourseDao {
     public List<Course> queryCourseByID(final int id){
        final String sql = "SELECT *  FROM Course WHERE CourseId = ?";
        Object[] params = new Object[] {id};
-       List course = jdbcTemplate.query(sql, params, new CourseMapper());
-       return course;
+       return jdbcTemplate.query(sql, params, new CourseMapper());
     }
 
     public List<Course> queryAll(){
@@ -78,11 +77,11 @@ public class CourseDao {
     protected class CourseMapper implements RowMapper{
        public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
            Course course = new Course();
-           course.setCourseId(rs.getInt("courseId"));
-           course.setCourseName(rs.getString("courseName"));
-           course.setCredit(rs.getInt("credit"));
-           course.setPeriod(rs.getInt("period"));
-           course.setTeacherId(rs.getInt("teacherId"));
+           course.setCourseId(rs.getInt("CourseID"));
+           course.setCourseName(rs.getString("CourseName"));
+           course.setCredit(rs.getInt("Credit"));
+           course.setPeriod(rs.getInt("Period"));
+           course.setTeacherId(rs.getInt("TeacherID"));
            return course;
        }
 
