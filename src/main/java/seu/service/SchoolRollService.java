@@ -21,7 +21,7 @@ public class SchoolRollService {
 
     //添加学生信息
     public int addSchoolRoll(Student student){
-        if(studentDao.queryStudenetByStudentID(student.getStudentId()) == student)
+        if(studentDao.queryStudentByStudentID(student.getStudentId()) == student)
             return 0;
         else
             return studentDao.insertStudent(student);
@@ -36,9 +36,10 @@ public class SchoolRollService {
 
     //删除学生学籍信息
     public int deleteSchoolRollById(int id){
-        return studentDao.deleteStudentByID(id);
+        return studentDao.deleteStudentByStudentID(id);
     }
 
+    //更改信息
     public int changeStudentNameByStudentId(int id, String name){
         return studentDao.updateStudentNameByStudentID(id, name);
     }
@@ -52,13 +53,14 @@ public class SchoolRollService {
     }
 
     public int changeBalanceByStudentId(int studentId, int balance){
-        return studentDao.updateBalanceByStudentID();
+        return studentDao.updateBalanceByStudentID(studentId, balance);
     }
 
     public int changePasswordByStudentId(int studentId, String password){
         return studentDao.updatePasswordByStudentID(studentId, password);
     }
 
+    //获取学生信息
     public Student getStudentRollByStudentId(int studentId){
         return studentDao.queryStudentByStudentID(studentId);
     }
@@ -71,7 +73,7 @@ public class SchoolRollService {
         return studentDao.queryStudentByCourseId(courseId);
     }
 
-    public List<Student> getStudentRollByBookId(int bookId){
+    public Student getStudentRollByBookId(int bookId){
         return studentDao.queryStudentByBookId(bookId);
     }
 

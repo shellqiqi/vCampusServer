@@ -33,14 +33,14 @@ public class UserService {
         if(adminDao.queryAdminById(admin.getAdminId()) == admin)
             return 0;
         else
-            return adminDao.InsertAdmin(admin);
+            return adminDao.insertAdmin(admin);
     }
 
     public int addAdmin(int id, String password){
         if(adminDao.queryAdminById(id).getAdminId() == id)
             return 0;
         else
-            return adminDao.InsertAdmin(id, password);
+            return adminDao.insertAdmin(id, password);
     }
 
     //注销

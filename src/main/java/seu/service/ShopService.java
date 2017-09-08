@@ -1,5 +1,6 @@
 package seu.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import seu.dao.CommodityDao;
 import seu.domain.Commodity;
@@ -7,6 +8,7 @@ import seu.domain.Commodity;
 import java.util.List;
 @Service
 public class ShopService {
+    @Autowired
     CommodityDao commodityDao;
 
 
@@ -48,6 +50,7 @@ public class ShopService {
         return commodityDao.updateCommodityPrizeById(id, price);
     }
 
+    //获取商品信息
     public String getCommodityNameById(int id){
         return commodityDao.queryNameById(id);
     }
