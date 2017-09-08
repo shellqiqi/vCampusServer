@@ -45,27 +45,17 @@ public class DormitoryDao {
         return jdbcTemplate.update(sql, params);
     }
 
-    public String queryScoreByDormitoryID(final int DormitoryID) {
-        final String sql = "SELECT Score FROM Domitory WHERE DormitoryId = ?";
+    public int queryScoreByDormitoryID(final int DormitoryID) {
+        final String sql = "SELECT Score FROM Dormitory WHERE DormitoryId = ?";
         Object[] params = new Object[]{DormitoryID};
-        return jdbcTemplate.queryForObject(sql, params, String.class);
+        return jdbcTemplate.queryForObject(sql, params, int.class);
     }
 
-    @SuppressWarnings("unchecked")
-    public Dormitory queryDormitoryByDormitoryID(final String DormitoryId) {
-        final String sql = "SELECT * FROM Dormitory WHERE DorymitoryId = ?";
-        Object[] params = new Object[] {DormitoryId};
-        return jdbcTemplate.queryForObject(sql, params ,new DormitoryMapper());
-    }
-
-    private static final class DormitoryMapper implements RowMapper<Dormitory> {
-        @Override
-        public Dormitory mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return new Dormitory(
-                    rs.getInt("DormitoryID"),
-                    rs.getInt("Score")
-            );
-        }
+    public Dormitory queryDormitoryByStudentId(final int studentId){
+        final String sql = "SELECT * FROM Dormitory INNER JOIN Student ON Student.DormitoryId = Dormitory.DormitoryId " +
+                "WHERE Student.StudentId = ?";
+        Object[] params = new Object[]{studentId};
+        return jdbcTemplate.queryForObject(sql, params, new DormitoryMapper());
     }
 
     public List<Dormitory> queryAll() {
@@ -79,7 +69,7 @@ public class DormitoryDao {
             return new Dormitory(
                     rs.getInt("DormitoryId"),
                     rs.getInt("Score"));
-            );
+
         }
     }
 }

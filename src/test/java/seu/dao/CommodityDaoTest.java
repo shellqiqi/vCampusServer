@@ -30,6 +30,8 @@ public class CommodityDaoTest {
     public void insertCommodityTest1() throws Exception {
         queryAllTest();
         //To-Do!!!!!!
+        int Id = 2; String name = "2号商品"; int prize = 20; int inventory = 200;
+        System.out.println(commodityItem.insertCommodity(Id,name,prize,inventory));
         queryAllTest();
     }
 
@@ -37,6 +39,7 @@ public class CommodityDaoTest {
     public void deleteCommodityByIdTest() throws Exception {
         queryAllTest();
         //To-Do!!!!!!
+        System.out.println(commodityItem.deleteCommodityById(2));
         queryAllTest();
     }
 
@@ -44,6 +47,7 @@ public class CommodityDaoTest {
     public void updateCommodityInventoryByIdTest() throws Exception {
         queryAllTest();
         //To-Do!!!!!!
+        System.out.println(commodityItem.updateCommodityInventoryById(1,150));
         queryAllTest();
     }
 
@@ -51,19 +55,23 @@ public class CommodityDaoTest {
     public void updateCommodityPrizeByIdTest() throws Exception {
         queryAllTest();
         //To-Do!!!!!!
+        System.out.println(commodityItem.updateCommodityPrizeById(1,15));
         queryAllTest();
     }
 
     @Test
     public void queryNameByIdTest() throws Exception {
+        System.out.println(commodityItem.queryNameById(1));
     }
 
     @Test
     public void queryCommodityByIdTest() throws Exception {
+        System.out.println(commodityItem.queryCommodityById(2));
     }
 
     @Test
     public void queryAllTest() throws Exception {
+        System.out.println(commodityItem.queryAll());
     }
 
 }

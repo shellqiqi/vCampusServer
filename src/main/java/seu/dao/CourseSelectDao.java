@@ -23,12 +23,12 @@ public class CourseSelectDao {
     }
 
     public int insertCourseSelect(final CourseSelect courseSelect){
-        final String sql = "INSERT INTO CourseSelect(StudentID, CourseID, Grade) VALUES(?,?)";
+        final String sql = "INSERT INTO CourseSelect(StudentID, CourseID, Grade) VALUES(?,?,?)";
         Object[] params = new Object[]{courseSelect.getStudentId(),courseSelect.getCourseId(),courseSelect.getGrade()};
         return jdbcTemplate.update(sql,params);
     }
     public int insertCourseSelect(final int studentID, final int courseID,final int grade){
-        final String sql = "INSERT INTO CourseSelect(StudentID, CourseID, Grade) VALUES(?,?)";
+        final String sql = "INSERT INTO CourseSelect(StudentID, CourseID, Grade) VALUES(?,?,?)";
         Object[] params = new Object[]{studentID,courseID,grade};
         return jdbcTemplate.update(sql,params);
     }

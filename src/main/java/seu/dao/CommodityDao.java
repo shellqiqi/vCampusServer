@@ -40,13 +40,13 @@ public class CommodityDao {//TODO: Create Test
 
     public int updateCommodityInventoryById(final int id, final int inventory){
         final String sql = "UPDATE Commodity SET Inventory = ? WHERE CommodityID = ?";
-        Object[] params = new Object[] {id, inventory};
+        Object[] params = new Object[] {inventory,id};
         return jdbcTemplate.update(sql, params);
     }
 
     public int updateCommodityPrizeById(final int id, final int prize){
         final String sql = "UPDATE Commodity SET Prize = ? WHERE CommodityID = ?";
-        Object[] params = new Object[] {id, prize};
+        Object[] params = new Object[] {prize,id};
         return jdbcTemplate.update(sql, params);
     }
 
