@@ -3,8 +3,13 @@ package seu.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import seu.domain.CourseSelect;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 
 @Repository
@@ -62,5 +67,20 @@ public class CourseSelectDao {
         final String sql = "SELECT TeacherID FROM CourseSelect WHERE CourseSelectID = ?";
         Object[] params = new Object[]{courseSelectID};
         return jdbcTemplate.queryForObject(sql,params,int.class);
+    }
+    public List<CourseSelect> queryAll() {
+        final String sql = "SELECT * FROM CourseSelect";
+        return jdbcTemplate.query(sql, new CourseSelectMapper());
+    }
+    private static final class CourseSelectMapper implements RowMapper<CourseSelect> {
+        @Override
+        public CourseSelect mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new CourseSelect(
+                    rs.getInt("CourseSelectID"),
+                    rs.getInt("StudentID"),
+                    rs.getInt("CourseID"),
+                    rs.getInt("Grade")
+            );
+        }
     }
 }

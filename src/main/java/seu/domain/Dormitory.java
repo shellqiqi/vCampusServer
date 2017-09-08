@@ -20,6 +20,7 @@ public class Dormitory {
         return dormitoryId;
     }
 
+
     public void setDormitoryId(int dormitoryId) {
         this.dormitoryId = dormitoryId;
     }
