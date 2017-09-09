@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 import seu.domain.Student;
-import seu.config.ApplicationContextConfig;
 
 /*
  * Created by Q on 2017/9/6.

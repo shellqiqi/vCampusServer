@@ -7,9 +7,9 @@
           <file>file://$MODULE_DIR$/src/main/java/seu/Main.java</file>
         </fileset>
         <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/ApplicationContext.xml</file>
           <file>file://$MODULE_DIR$/src/main/java/seu/config/ApplicationContextConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/seu/Main.java</file>
-          <file>file://$MODULE_DIR$/src/main/resources/ApplicationContext.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -25,9 +25,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.7.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.7.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:1.5.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.3.7.RELEASE" level="project" />
