@@ -9,19 +9,17 @@ public class Library {
     private int bookId;
     private int studentId;
     private String bookName;
-    private Date period;
-    private Date returnDate;
+    private Date startDate;
 
     public Library() {
         super();
     }
 
-    public Library(int bookId, String bookName, int studentId, Date period, Date returnDate) {
+    public Library(int bookId, String bookName, int studentId, Date sDate) {
         this.bookId = bookId;
         this.bookName = bookName;
         this.studentId = studentId;
-        this.period = period;
-        this.returnDate = returnDate;
+        this.startDate = sDate;
     }
 
     public int getBookId() {
@@ -48,24 +46,17 @@ public class Library {
         this.studentId = studentId;
     }
 
-    public Date getPeriod() {
-        return period;
-    }
+    public Date getStartDate() { return startDate; }
 
-    public void setPeriod(Date period) {
-        this.period = period;
-    }
-
-    public Date getReturnDate() {
-        return returnDate;
-    }
-
-    public void setReturnDate(Date returnDate) {
-        this.returnDate = returnDate;
-    }
+    public void setStartDate(Date startDate) { this.startDate = startDate; }
 
     @Override
     public String toString() {
-        return "Library{" + "bookId=" + bookId + ", bookName='" + bookName + '\'' + ", studentId=" + studentId + ", period=" + period + ", returnDate=" + returnDate + '}';
+        return "Library{" +
+                "bookId=" + bookId +
+                ", studentId=" + studentId +
+                ", bookName='" + bookName + '\'' +
+                ", startDate=" + startDate +
+                '}';
     }
 }
