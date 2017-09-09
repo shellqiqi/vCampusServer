@@ -58,6 +58,7 @@ public class DormitoryDao {
         return jdbcTemplate.queryForObject(sql, params, new DormitoryMapper());
     }
 
+
     public List<Dormitory> queryAll() {
         final String sql = "SELECT * FROM Dormitory";
         return jdbcTemplate.query(sql, new DormitoryMapper());

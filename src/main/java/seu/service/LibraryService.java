@@ -5,44 +5,52 @@ import org.springframework.stereotype.Service;
 import seu.dao.LibraryDao;
 import seu.domain.Library;
 
+import java.util.Date;
 import java.util.List;
 @Service
 public class LibraryService {
 
     @Autowired
-    LibraryDao libraryuser;
+    LibraryDao libraryUser;
 
-    public LibraryDao getAdministrator() {
-        return libraryuser;
+    public LibraryDao getLibraryUser() {
+        return libraryUser;
     }
 
-    public void setAdministrator(LibraryDao administrator) {
-        this.libraryuser = administrator;
+    public void setLibraryUser(LibraryDao libraryUser) {
+        this.libraryUser = libraryUser;
     }
 
-    public void addBook(final Library book){
-        //return libraryuser.addBook(book);
+    //添加图书
+    public int insertBook(Library book){
+        if(libraryUser.queryBookByBookId(book.getBookId()) == null)
+            return libraryUser.insertBook(book);
+        else
+            return 0;
     }
 
-
-    public void deleteLibraryById(int id) {
-       // return libraryuser.deleteLibraryById(id);
+    //删除图书
+    public int deleteLibraryById(int id) {
+       return libraryUser.deleteBookByBookId(id);
     }
 
-    public void deleteLibraryByName(String name) {
-       // return libraryuser.deleteLibraryByName(name);
+    //更新图书信息
+    public int updateBookByBookId(int bookId, int studentId, Date date) {
+        return libraryUser.updateBookByBookId(bookId,studentId,date);
     }
 
-    public void updateBookNameById(final int id, final String name) {
-       // return libraryuser.updateBookNameById(id,name);
+    //通过图书id获取图书
+    public Library getBookByBookId(int id) {
+        return libraryUser.queryBookByBookId(id);
     }
 
-
-    public List<Library> queryBooksByStudentId(final int id) {
-        return libraryuser.queryBooksByStudentId(id);
+    //通过学生id获取图书
+    public List<Library> getBooksByStudentId(int studentId) {
+        return libraryUser.queryBooksByStudentId(studentId);
     }
 
-    public List<Library> queryAll() {
-        return libraryuser.queryAll();
+    //获取该图书全部信息
+    public List<Library> getAll() {
+        return libraryUser.queryAll();
     }
 }
