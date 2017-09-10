@@ -1,43 +1,61 @@
 package seu.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import seu.dao.DormitoryDao;
 import seu.domain.Dormitory;
 
 import java.util.List;
+@Service
+public class DormitoryService{
+    @Autowired
+    DormitoryDao dormitoryUser;
 
-public class DormitoryService {
-    DormitoryDao dormitoryuser;
-
-    public DormitoryDao getDormitoryuser() {
-        return dormitoryuser;
+    public DormitoryDao getDormitoryUser() {
+        return dormitoryUser;
     }
 
-    public void setDormitoryuser(DormitoryDao dormitoryuser) {
-        this.dormitoryuser = dormitoryuser;
+    public void setDormitoryUser(DormitoryDao dormitoryUser) {
+        this.dormitoryUser = dormitoryUser;
     }
 
-    public int insertDormitory(final Dormitory dormitory) {
-        return dormitoryuser.insertDormitory(dormitory);
+    //增加宿舍
+    public int insertDormitory(Dormitory dormitory) {
+        if(dormitoryUser.queryScoreByDormitoryID(dormitory.getDormitoryId()) == dormitory.getScore())
+            return 0;
+        else
+            return dormitoryUser.insertDormitory(dormitory);
     }
 
-    public int insertDormitory(final int DormitoryID, final int Score) {
-        return dormitoryuser.insertDormitory(DormitoryID, Score);
+    public int insertDormitory(int DormitoryID, int Score) {
+        if(dormitoryUser.queryScoreByDormitoryID(DormitoryID) == Score)
+            return 0;
+        else
+            return dormitoryUser.insertDormitory(DormitoryID, Score);
     }
 
-    public int deleteDormitoryByID(final int DormitoryID) {
-        return dormitoryuser.deleteDormitoryByID(DormitoryID);
+    //删除宿舍
+    public int deleteDormitoryByID( int DormitoryID) {
+        return dormitoryUser.deleteDormitoryByID(DormitoryID);
     }
 
-    public int updateScoreByID(final int DormitoryID, final int Score) {
-        return dormitoryuser.updateScoreByID(DormitoryID, Score);
+    //更新学生分数与宿舍信息
+    public int updateScoreByID(int DormitoryID, int Score) {
+        return dormitoryUser.updateScoreByID(DormitoryID, Score);
     }
 
-    public int queryScoreByDormitoryID(final int DormitoryID) {
-        return dormitoryuser.queryScoreByDormitoryID(DormitoryID);
+    //通过学生宿舍查询学生成绩
+    public int queryScoreByDormitoryID(int DormitoryID) {
+        return dormitoryUser.queryScoreByDormitoryID(DormitoryID);
     }
 
-    //public List<Dormitory> queryDormitoryByStudentId(final int studentId) {
-    //    return dormitoryuser.queryDormitoryByStudentId(studentId);
-  //  }
+    //通过学生id查询学生宿舍
+    public Dormitory getDormitoryByStudentId(int studentId) {
+        return dormitoryUser.queryDormitoryByStudentId(studentId);
+    }
 
+    //查询学生成绩级宿舍信息
+    public List<Dormitory> getAll() {
+        return dormitoryUser.queryAll();
+    }
 }
