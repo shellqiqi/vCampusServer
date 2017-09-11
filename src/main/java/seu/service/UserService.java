@@ -133,5 +133,22 @@ public class UserService {
     public List<Admin> getAdmin(){
         return adminDao.queryAll();
     }
- 
+
+    //获取学生信息
+    public Student getStudentByStudentId(int id){
+        return studentDao.queryStudentByStudentID(id);
+    }
+
+    public List<Student> getStudent(){
+        return studentDao.queryAll();
+    }
+
+    //获取教师信息
+    public Teacher getTeacherByTeacherId(int id){
+        return teacherDao.queryTeacherByTeacherID(id);
+    }
+
+    public List<Teacher> getTeacher(){
+        return teacherDao.queryAll();
+    }
 }
