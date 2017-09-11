@@ -27,6 +27,7 @@ public class Server implements Runnable {
     public static boolean runFlag = true;
 
     //程序退出终止监听
+/*
     public Server() {
         Main.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -35,6 +36,7 @@ public class Server implements Runnable {
             }
         });
     }
+*/
 
     public void run() {
         //服务端在20006端口监听客户端请求的TCP连接
