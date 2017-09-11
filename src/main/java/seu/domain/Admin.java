@@ -19,7 +19,7 @@ public class Admin {
     }
 
     public void setAdminId(int adminId) {
-        adminId = adminId;
+        this.adminId = adminId;
     }
 
     public String getPassword() {

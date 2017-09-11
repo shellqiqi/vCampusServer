@@ -64,14 +64,14 @@ public class TeacherDao {
         return jdbcTemplate.queryForObject(sql, params, new TeacherMapper());
     }
 
-    public Teacher queryteacherByClassID(final int classId){
+    public Teacher queryTeacherByClassID(final int classId){
         final String sql = "SELECT * FROM Teacher INNER JOIN Class ON Class.TeacherId = Teacher.TeacherId " +
                 "WHERE Class.ClassID = ?";
         Object[] params = new Object[] {classId};
         return jdbcTemplate.queryForObject(sql, params, new TeacherMapper());
     }
 
-    public Teacher queryteacherByCourseID(final int courseId){
+    public Teacher queryTeacherByCourseID(final int courseId){
         final String sql = "SELECT * FROM Teacher INNER JOIN Course ON Course.TeacherId = Teacher.TeacherId " +
                 "WHERE Course.CourseID = ?";
         Object[] params = new Object[] {courseId};
