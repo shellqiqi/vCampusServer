@@ -27,6 +27,7 @@ public class Server implements Runnable {
     public static boolean runFlag = true;
 
     //程序退出终止监听
+    //TODO: 测试时注释，实现Main时取消注释
 /*
     public Server() {
         Main.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
