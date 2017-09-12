@@ -1,25 +1,28 @@
 package seu.socket;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.owlike.genson.GenericType;
+import com.owlike.genson.Genson;
+import com.owlike.genson.GensonBuilder;
 import org.springframework.stereotype.Component;
-
-import java.io.IOException;
+import seu.domain.Admin;
 
 @Component
 public class JsonUtil {
 
-    private ObjectMapper objectMapper;
+    private Genson genson;
 
-    JsonUtil() {
-        objectMapper = new ObjectMapper();
+    public JsonUtil() {
+        genson = new Genson();
     }
 
-    public String serializeClientRequest(ClientRequest request) throws JsonProcessingException {
-        return objectMapper.writeValueAsString(request);
+    String serialize(ClientRequest clientRequest) {
+        return genson.serialize(clientRequest);
     }
 
-    public ClientRequest deserializeClientRequest(String s) throws IOException {
-        return objectMapper.readValue(s, ClientRequest.class);
+    ClientRequest deserialize(String json) {
+        if (genson.deserialize(json, ClientRequest.class).getaClass().equals(Admin.class.toString())) {
+            return genson.deserialize(json, new GenericType<ClientRequest<Admin>>(){});
+        }
+        return null;
     }
 }
