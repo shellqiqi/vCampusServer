@@ -1,67 +1,72 @@
 package seu.socket;
 
 import org.springframework.stereotype.Component;
-import seu.domain.Admin;
 
 @Component
 public class ClientRequest<T> {
 
-    String destination;
-    String type;
+    private String serviceName;
+    private String methodName;
 
-    T data;
-    String aClass;
+    private T param;
+    private String paramType;
+
+    private String requestType;
 
     public ClientRequest() {
         super();
     }
 
-    public ClientRequest(String destination, String type, T data, String aClass) {
-        this.destination = destination;
-        this.type = type;
-        this.data = data;
-        this.aClass = aClass;
+    public ClientRequest(String serviceName, String methodName, T param, String paramType, String requestType) {
+        this.serviceName = serviceName;
+        this.methodName = methodName;
+        this.param = param;
+        this.paramType = paramType;
+        this.requestType = requestType;
     }
 
-    public String getDestination() {
-        return destination;
+    public String getServiceName() {
+        return serviceName;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
-    public String getType() {
-        return type;
+    public String getMethodName() {
+        return methodName;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
     }
 
-    public T getData() {
-        return data;
+    public T getParam() {
+        return param;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public void setParam(T param) {
+        this.param = param;
     }
 
-    public String getaClass() {
-        return aClass;
+    public String getParamType() {
+        return paramType;
     }
 
-    public void setaClass(String aClass) {
-        this.aClass = aClass;
+    public void setParamType(String paramType) {
+        this.paramType = paramType;
+    }
+
+    public String getRequestType() {
+        return requestType;
+    }
+
+    public void setRequestType(String requestType) {
+        this.requestType = requestType;
     }
 
     @Override
     public String toString() {
-        return "ClientRequest{" +
-                "destination='" + destination + '\'' +
-                ", type='" + type + '\'' +
-                ", data=" + data +
-                ", aClass=" + aClass +
-                '}';
+        return "ClientRequest{" + "serviceName='" + serviceName + '\'' + ", methodName='" + methodName + '\'' + ", param=" + param + ", paramType='" + paramType + '\'' + ", requestType='" + requestType + '\'' + '}';
     }
 }
