@@ -44,7 +44,7 @@ public class JsonUtilTest {
     @Test
     public void deserializeMessage() throws Exception {
         ClientRequest<List<Admin>> request = jsonUtil.deserialize(json);
-        System.out.println(request.getData().getClass());
+        System.out.println(request.getData());
         System.out.println(request.getData().get(0).getPassword());
 //        List<Admin> list = (List<Admin>) request.getData();
 //        System.out.println(list);

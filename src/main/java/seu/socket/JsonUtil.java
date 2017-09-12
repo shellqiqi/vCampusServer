@@ -2,7 +2,6 @@ package seu.socket;
 
 import com.owlike.genson.GenericType;
 import com.owlike.genson.Genson;
-import com.owlike.genson.GensonBuilder;
 import org.springframework.stereotype.Component;
 import seu.domain.Admin;
 
