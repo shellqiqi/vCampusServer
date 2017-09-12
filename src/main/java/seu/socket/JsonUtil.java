@@ -6,6 +6,8 @@ import com.owlike.genson.GensonBuilder;
 import org.springframework.stereotype.Component;
 import seu.domain.Admin;
 
+import java.util.List;
+
 @Component
 public class JsonUtil {
 
@@ -20,8 +22,8 @@ public class JsonUtil {
     }
 
     ClientRequest deserialize(String json) {
-        if (genson.deserialize(json, ClientRequest.class).getaClass().equals(Admin.class.toString())) {
-            return genson.deserialize(json, new GenericType<ClientRequest<Admin>>(){});
+        if (genson.deserialize(json, ClientRequest.class).getaClass().equals(List.class.toString())) {
+            return genson.deserialize(json, new GenericType<ClientRequest<List<Admin>>>(){});
         }
         return null;
     }

@@ -31,7 +31,7 @@ public class JsonUtilTest {
 
     @Before
     public void setUp() throws Exception {
-        ClientRequest request = new ClientRequest("arg0", "arg1", userService.getAdmin().get(0), Admin.class.toString());
+        ClientRequest request = new ClientRequest("arg0", "arg1", userService.getAdmin(), List.class.toString());
         json = jsonUtil.serialize(request);
     }
 
@@ -43,9 +43,9 @@ public class JsonUtilTest {
 
     @Test
     public void deserializeMessage() throws Exception {
-        ClientRequest<Admin> request = jsonUtil.deserialize(json);
+        ClientRequest<List<Admin>> request = jsonUtil.deserialize(json);
         System.out.println(request.getData().getClass());
-        System.out.println(request.getData().getPassword());
+        System.out.println(request.getData().get(0).getPassword());
 //        List<Admin> list = (List<Admin>) request.getData();
 //        System.out.println(list);
 //        System.out.println(list.get(0));
