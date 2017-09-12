@@ -65,13 +65,13 @@ public class TeacherDaoTest {
     }
 
     @Test
-    public void queryteacherByClassIDTest() throws Exception {
-        System.out.println(teacherDaoItem.queryteacherByClassID(90154));
+    public void queryTeacherByClassIDTest() throws Exception {
+        System.out.println(teacherDaoItem.queryTeacherByClassID(90154));
     }
 
     @Test
-    public void queryteacherByCourseIDTest() throws Exception {
-        System.out.println(teacherDaoItem.queryteacherByCourseID(8));
+    public void queryTeacherByCourseIDTest() throws Exception {
+        System.out.println(teacherDaoItem.queryTeacherByCourseID(8));
     }
 
     @Test

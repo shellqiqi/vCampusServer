@@ -59,21 +59,23 @@ public class CommodityDao {//TODO: Create Test
     public List<Commodity> queryCommodityById(final int id) {
         final String sql = "SELECT * FROM Commodity WHERE CommodityID = ?";
         Object[] params = new Object[] {id};
-        return (List<Commodity>)jdbcTemplate.query(sql, params, new RowMapper() {
-            public Commodity mapRow(ResultSet rs, int rowNum) throws SQLException {
-                return new Commodity(rs.getInt("CommodityID"), rs.getString("CommodityName")
-                        ,rs.getInt("Prize"), rs.getInt("Inventory"));
-            }
-        });
+        return jdbcTemplate.query(sql, params, new CommodityMapper());
     }
 
     public List<Commodity> queryAll(){
         final String sql = "SELECT * FROM Commodity" ;
-        return (List<Commodity>)jdbcTemplate.query(sql, new RowMapper() {
-            public Commodity mapRow(ResultSet rs, int rowNum) throws SQLException {
-                return new Commodity(rs.getInt("CommodityID"), rs.getString("CommodityName")
-                        ,rs.getInt("Prize"), rs.getInt("Inventory"));
-            }
-        });
+        return jdbcTemplate.query(sql, new CommodityMapper());
+    }
+
+    private static final class CommodityMapper implements RowMapper<Commodity> {
+        @Override
+        public Commodity mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new Commodity(
+                    rs.getInt("CommodityID"),
+                    rs.getString("CommodityName"),
+                    rs.getInt("Prize"),
+                    rs.getInt("Iventory")
+            );
+        }
     }
 }
