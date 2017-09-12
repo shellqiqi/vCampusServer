@@ -30,13 +30,19 @@ public class LibraryService {
     }
 
     //删除图书
-    public int deleteLibraryById(int id) {
-       return libraryUser.deleteBookByBookId(id);
+    public int deleteBookByBookId(Library book) {
+       if(libraryUser.queryBookByBookId(book.getBookId()) == book)
+           return libraryUser.deleteBookByBookId(book.getBookId());
+       else
+           return 0;
     }
 
     //更新图书信息
-    public int updateBookByBookId(int bookId, int studentId, Date date) {
-        return libraryUser.updateBookByBookId(bookId,studentId,date);
+    public int updateBookByBookId(Library book) {
+        if(libraryUser.queryBookByBookId(book.getBookId()) == book)
+            return libraryUser.updateBookByBookId(book.getBookId(),book.getStudentId(),book.getStartDate());
+        else
+            return 0;
     }
 
     //通过图书id获取图书
@@ -50,7 +56,7 @@ public class LibraryService {
     }
 
     //获取该图书全部信息
-    public List<Library> getAll() {
+    public List<Library> getLibraryAll() {
         return libraryUser.queryAll();
     }
 }

@@ -27,21 +27,23 @@ public class DormitoryService{
             return dormitoryUser.insertDormitory(dormitory);
     }
 
-    public int insertDormitory(int DormitoryID, int Score) {
-        if(dormitoryUser.queryScoreByDormitoryID(DormitoryID) == Score)
-            return 0;
-        else
-            return dormitoryUser.insertDormitory(DormitoryID, Score);
-    }
+
 
     //删除宿舍
-    public int deleteDormitoryByID( int DormitoryID) {
-        return dormitoryUser.deleteDormitoryByID(DormitoryID);
+    public int deleteDormitoryByID(Dormitory dormitory) {
+        if(dormitoryUser.queryScoreByDormitoryID(dormitory.getDormitoryId()) == dormitory.getScore())
+            return dormitoryUser.deleteDormitoryByID(dormitory.getDormitoryId());
+        else
+            return 0;
     }
 
     //更新学生分数与宿舍信息
-    public int updateScoreByID(int DormitoryID, int Score) {
-        return dormitoryUser.updateScoreByID(DormitoryID, Score);
+    public int updateScoreByID(Dormitory dormitory) {
+        if(dormitoryUser.queryScoreByDormitoryID(dormitory.getDormitoryId()) == dormitory.getScore())
+            return 0;
+        else
+            return dormitoryUser.updateScoreByID(dormitory.getDormitoryId()
+                , dormitory.getScore());
     }
 
     //通过学生宿舍查询学生成绩
@@ -55,7 +57,7 @@ public class DormitoryService{
     }
 
     //查询学生成绩级宿舍信息
-    public List<Dormitory> getAll() {
+    public List<Dormitory> getDormitoryAll() {
         return dormitoryUser.queryAll();
     }
 }

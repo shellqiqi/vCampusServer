@@ -2,7 +2,9 @@ package seu.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import seu.dao.CourseDao;
 import seu.dao.CourseSelectDao;
+import seu.domain.Course;
 import seu.domain.CourseSelect;
 
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 public class CourseSelectService {
     @Autowired
     CourseSelectDao courseSelectDao;
+    CourseDao courseDao;
 
     public CourseSelectDao getCourseSelect() {
         return courseSelectDao;
@@ -25,14 +28,6 @@ public class CourseSelectService {
             return 0;
         else
             return courseSelectDao.insertCourseSelect(courseSelect);
-    }
-
-    //这个地方我很不确定怎么写，我的目的是判断搜出的分数不存在，但是不会写
-    public int insertCourseSelect(int studentID, int courseID ) {
-        if(courseSelectDao.queryGradeByCourseIDAndStudentID(studentID,courseID) == 0)
-            return 0;
-        else
-            return courseSelectDao.insertCourseSelect(studentID, courseID);
     }
 
     //删除所选课程
@@ -51,7 +46,48 @@ public class CourseSelectService {
     }
 
     //获取学生的id，选课id，课程id和成绩
-    public List<CourseSelect> getAll() {
+    public List<CourseSelect> getCourseSelectAll() {
         return courseSelectDao.queryAll();
     }
+
+
+    public int insertCourse(Course course) {
+        if(courseDao.queryCourseByCourseID(course.getCourseId()) == course)
+            return 0;
+        else
+            return courseDao.insertCourse(course);
+    }
+
+    //删除课程
+    public int deleteCourseByCourseId(Course course) {
+        if(courseDao.queryCourseByCourseID(course.getCourseId()) == course)
+            return courseDao.deleteCourseByCourseId(course.getCourseId());
+        else
+            return 0;
+
+    }
+
+    //更新课程
+    public int updateCourseByCourseId(Course course) {
+        if(courseDao.queryCourseByCourseID(course.getCourseId()) == course)
+            return courseDao.updateCourseByCourseId(course.getCourseId(),course);
+        else
+
+            return 0;
+    }
+
+    //通过学生id查询课程
+    public List<Course> queryCourseByStudentId(int id) {
+        return courseDao.queryCourseByStudentId(id);
+    }
+
+    //通过教师id查询课程
+    public List<Course> queryCourseByTeacherID(int id) {
+        return courseDao.queryCourseByTeacherID(id);
+    }
+
+    //获取教师任教的这门课程的全部信息
+    public List<Course> getCourseAll() {
+       return courseDao.queryAll();
+   }
 }
