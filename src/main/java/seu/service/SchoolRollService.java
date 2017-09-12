@@ -2,14 +2,18 @@ package seu.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import seu.dao.ClassDao;
+import seu.domain.Class;
 import seu.dao.StudentDao;
 import seu.domain.Student;
+
 
 import java.util.List;
 @Service
 public class SchoolRollService {
     @Autowired
     StudentDao studentDao;
+    ClassDao classDao;
 
     public StudentDao getStudentDao() {
         return studentDao;
@@ -19,7 +23,7 @@ public class SchoolRollService {
         this.studentDao = studentDao;
     }
 
-    //添加学生信息
+    //添加学生基本信息
     public int addSchoolRoll(Student student){
         if(studentDao.queryStudentByStudentID(student.getStudentId()) == student)
             return 0;
@@ -34,12 +38,22 @@ public class SchoolRollService {
             return studentDao.insertStudent(studentId, studentName, classId, dormitoryId, balance, password);
     }
 
-    //删除学生学籍信息
+    //添加学生班级信息
+    public int addStudentClass(Class cla){
+        return classDao.insertClass(cla);
+    }
+
+    //删除学生基本信息
     public int deleteSchoolRollById(int id){
         return studentDao.deleteStudentByStudentID(id);
     }
 
-    //更改信息
+    //删除学生班级信息
+    public int deleteClassByClassId(int id){
+        return classDao.deleteClassById(id);
+
+    }
+    //更改学生基本信息
     public int changeStudentNameByStudentId(int id, String name){
         return studentDao.updateStudentNameByStudentID(id, name);
     }
@@ -58,6 +72,11 @@ public class SchoolRollService {
 
     public int changePasswordByStudentId(int studentId, String password){
         return studentDao.updatePasswordByStudentID(studentId, password);
+    }
+
+    //更改学生班级信息
+    public int changeClassByClassId(int id, Class cla){
+        return classDao.updateClassById(id, cla);
     }
 
     //获取学生信息
@@ -83,5 +102,22 @@ public class SchoolRollService {
 
     public List<Student> getSchoolRollAll(){
         return studentDao.queryAll();
+    }
+
+    //获取学生班级信息
+    public List<Class> getClassByTeacherId(int id){
+        return classDao.queryClassByTeacherId(id);
+    }
+
+    public Class getClassByStudentId(int id){
+        return classDao.queryClassByStudentId(id);
+    }
+
+    public Class getClassByClassId(int id){
+        return classDao.queryClassById(id);
+    }
+
+    public List<Class> getClassAll(){
+        return classDao.queryAll();
     }
 }
