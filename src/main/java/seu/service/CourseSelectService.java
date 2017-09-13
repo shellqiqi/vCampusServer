@@ -2,7 +2,9 @@ package seu.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import seu.dao.CourseDao;
 import seu.dao.CourseSelectDao;
+import seu.domain.Course;
 import seu.domain.CourseSelect;
 
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.List;
 public class CourseSelectService {
     @Autowired
     CourseSelectDao courseSelectDao;
+    @Autowired
+    CourseDao courseDao;
 
     public CourseSelectDao getCourseSelect() {
         return courseSelectDao;
@@ -19,7 +23,7 @@ public class CourseSelectService {
         this.courseSelectDao = courseSelect;
     }
 
-    //添加选课
+    //学生添加选课
     public int insertCourseSelect(CourseSelect courseSelect) {
         if(courseSelectDao.queryGradeByCourseIDAndStudentID(courseSelect.getCourseId(),courseSelect.getStudentId()) == courseSelect.getGrade())
             return 0;
@@ -27,31 +31,38 @@ public class CourseSelectService {
             return courseSelectDao.insertCourseSelect(courseSelect);
     }
 
-    //这个地方我很不确定怎么写，我的目的是判断搜出的分数不存在，但是不会写
-    public int insertCourseSelect(int studentID, int courseID ) {
-        if(courseSelectDao.queryGradeByCourseIDAndStudentID(studentID,courseID) == 0)
-            return 0;
-        else
-            return courseSelectDao.insertCourseSelect(studentID, courseID);
-    }
-
-    //删除所选课程
+    //学生删除所选课程
     public int deleteCourseSelectByCourseIDAndStudentID( int studentID ,  int courseID) {
         return courseSelectDao.deleteCourseSelectByCourseIDAndStudentID(studentID, courseID);
     }
 
-    //更新选课信息
+    //学生更新选课信息
     public int updateGradeByCourseIDAndStudentID( int studentID,  int courseID,  int grade) {
         return courseSelectDao.updateGradeByCourseIDAndStudentID(studentID, courseID, grade);
     }
 
-    //获取成绩
+    //学生获取成绩
     public int queryGradeByCourseIDAndStudentID(  int studentID,  int courseID) {
         return courseSelectDao.queryGradeByCourseIDAndStudentID(studentID, courseID);
     }
 
-    //获取学生的id，选课id，课程id和成绩
-    public List<CourseSelect> getAll() {
+    //学生获取学生的id，选课id，课程id和成绩
+    public List<CourseSelect> getCourseSelectAll() {
         return courseSelectDao.queryAll();
     }
+
+    //学生通过学生id查询课程
+    public List<Course> queryCourseByStudentId(int id) {
+        return courseDao.queryCourseByStudentId(id);
+    }
+
+    //学生通过教师id查询课程
+    public List<Course> queryCourseByTeacherID(int id) {
+        return courseDao.queryCourseByTeacherID(id);
+    }
+
+    //获取所有课程的全部信息
+    public List<Course> getCourseAll() {
+       return courseDao.queryAll();
+   }
 }

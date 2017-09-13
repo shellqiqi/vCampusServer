@@ -8,15 +8,15 @@ import seu.dao.TeacherDao;
 import seu.domain.Admin;
 import seu.domain.Student;
 import seu.domain.Teacher;
-
-import java.util.List;
 @Service
 public class UserService {
 
     @Autowired
-    private AdminDao adminDao;
-    private StudentDao studentDao;
-    private TeacherDao teacherDao;
+    AdminDao adminDao;
+    @Autowired
+    StudentDao studentDao;
+    @Autowired
+    TeacherDao teacherDao;
 
     public void setAdminDao(AdminDao adminDao) {
         this.adminDao = adminDao;
@@ -58,26 +58,12 @@ public class UserService {
             return adminDao.insertAdmin(admin);
     }
 
-    public int addAdmin(int id, String password){
-        if(adminDao.queryAdminById(id).getAdminId() == id)
-            return 0;
-        else
-            return adminDao.insertAdmin(id, password);
-    }
-
     //学生注册
     public int addStudent(Student student){
         if(studentDao.queryStudentByStudentID(student.getStudentId()) == student)
             return 0;
         else
             return studentDao.insertStudent(student);
-    }
-
-    public int addStudent(int id, String studentName, int classId, int dormitoryId, int balance, String password){
-        if(studentDao.queryStudentByStudentID(id).getStudentId() == id)
-            return 0;
-        else
-            return studentDao.insertStudent(id, studentName, classId, dormitoryId, balance, password);
     }
 
     //教师注册
@@ -88,14 +74,7 @@ public class UserService {
             return teacherDao.insertTeacher(teacher);
     }
 
-    public int addTeacher(int id, String teacherName, int phoneNumber, String password){
-        if(teacherDao.queryTeacherByTeacherID(id).getTeacherId() == id)
-            return 0;
-        else
-            return teacherDao.insertTeacher(id, teacherName, phoneNumber, password);
-    }
-
-    //注销管理员账户
+   //注销管理员账户
     public int deleteAdminById(int id){
         return adminDao.deleteAdminById(id);
     }
@@ -110,45 +89,18 @@ public class UserService {
         return teacherDao.deleteTeacherByTeacherID(id);
     }
 
-    //修改管理员密码
-    public int changeAdminPasswordById(int id, String password){
-        return adminDao.updateAdminPasswordById(id, password);
+    //管理员修改个人密码
+    public int changeAdminPasswordById(Admin admin){
+        return adminDao.updateAdminPasswordById(admin.getAdminId(), admin.getPassword());
     }
 
-    //修改学生密码
-    public int changeStudentPasswordByStudentId(int id, String password){
-        return studentDao.updatePasswordByStudentID(id, password);
+    //学生修改个人密码
+    public int changeStudentPasswordByStudentId(Student student){
+        return studentDao.updatePasswordByStudentID(student.getStudentId(), student.getPassword());
     }
 
-    //修改教师密码
-    public int changeTeacherPasswordByTeacherId(int id, String password){
-        return teacherDao.updatePasswordByTeacherID(id, password);
-    }
-
-    //获取管理员信息
-    public Admin getAdminById(int id){
-        return adminDao.queryAdminById(id);
-    }
-
-    public List<Admin> getAdmin(){
-        return adminDao.queryAll();
-    }
-
-    //获取学生信息
-    public Student getStudentByStudentId(int id){
-        return studentDao.queryStudentByStudentID(id);
-    }
-
-    public List<Student> getStudent(){
-        return studentDao.queryAll();
-    }
-
-    //获取教师信息
-    public Teacher getTeacherByTeacherId(int id){
-        return teacherDao.queryTeacherByTeacherID(id);
-    }
-
-    public List<Teacher> getTeacher(){
-        return teacherDao.queryAll();
+    //教师修改个人密码
+    public int changeTeacherPasswordByTeacherId(Teacher teacher){
+        return teacherDao.updatePasswordByTeacherID(teacher.getTeacherId(), teacher.getPassword());
     }
 }
