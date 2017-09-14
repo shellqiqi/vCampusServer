@@ -19,7 +19,7 @@ public class StudentService {
     public int login(int studentId, String passwd){
         try {
             Student student = studentDao.queryStudentByStudentID(studentId);
-            if (student.getPassword() == passwd)
+            if (student.getPassword().equals(passwd) )
                 return 1;
             else
                 return 0;
