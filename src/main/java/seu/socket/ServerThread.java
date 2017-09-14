@@ -1,5 +1,6 @@
 package seu.socket;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,12 @@ public class ServerThread implements Runnable {
         this.client = client;
     }
 
+    private RequestRouter requestRouter;
+    @Autowired
+    public void setRequestRouter(RequestRouter requestRouter) {
+        this.requestRouter = requestRouter;
+    }
+
     @Override
     public void run() {
         Server.count++;
@@ -32,14 +39,11 @@ public class ServerThread implements Runnable {
             ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
             //获取Socket的输入流，用来接收从客户端发送过来的数据
             ObjectInputStream buf = new ObjectInputStream(new BufferedInputStream(client.getInputStream()));
-            boolean flag =true;
-            while(flag){
-                Object obj = buf.readObject();
-                if (obj != null) {
-                    //TODO: 添加服务端响应
-                } else {
-                    flag = false;
-                }
+            Object object = buf.readObject();
+            if (object != null) {
+                //TODO: 测试服务端响应
+                out.writeObject(requestRouter.getResponse((ClientRequest) object));
+                out.flush();
             }
             out.close();
             client.close();
@@ -50,4 +54,5 @@ public class ServerThread implements Runnable {
         Server.count--;
         System.out.println("客户端数量: " + Server.count);
     }
+
 }
