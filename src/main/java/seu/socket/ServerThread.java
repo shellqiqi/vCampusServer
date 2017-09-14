@@ -3,9 +3,7 @@ package seu.socket;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.Socket;
 
 @Component
@@ -31,25 +29,16 @@ public class ServerThread implements Runnable {
 
         try{
             //获取Socket的输出流，用来向客户端发送数据
-            PrintStream out = new PrintStream(client.getOutputStream());
+            ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
             //获取Socket的输入流，用来接收从客户端发送过来的数据
-            BufferedReader buf = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            ObjectInputStream buf = new ObjectInputStream(new BufferedInputStream(client.getInputStream()));
             boolean flag =true;
             while(flag){
-                //接收从客户端发送过来的数据
-                final String str =  buf.readLine();
-                //空字符防止阻塞
-                if(str == null || "".equals(str)){
+                Object obj = buf.readObject();
+                if (obj != null) {
+                    //TODO: 添加服务端响应
+                } else {
                     flag = false;
-                }else{
-                    //发送bye字符客户端退出，终止循环
-                    if("bye".equals(str)){
-                        flag = false;
-                    }else{
-                        //将接收到的字符串前面加上echo，发送到对应的客户端
-                        out.println("echo:" + str);
-                        System.out.println(str);
-                    }
                 }
             }
             out.close();
