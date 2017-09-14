@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ClientRequest<T> {
-
+    //TODO: 转用Java序列化实现
     private String serviceName;
     private String methodName;
 
