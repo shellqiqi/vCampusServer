@@ -26,30 +26,29 @@ public class RequestRouter {
 
         switch (requestType) {
             case "getAll":
-                return router(clientRequest.getServiceName(), clientRequest.getMethodName());
+                return nonParam(clientRequest.getServiceName(), clientRequest.getMethodName());
             case "getOne":
             case "delete":
-                return router(clientRequest.getServiceName(), clientRequest.getMethodName(), Integer.class, clientRequest.getParam());
+//                return intParam(clientRequest.getServiceName(), clientRequest.getMethodName(), Integer.class, clientRequest.getParam());
             case "update":
             case "add":
-                return router(clientRequest.getServiceName(), clientRequest.getMethodName(), Object.class, clientRequest.getParam());
+                return objParam(clientRequest.getServiceName(), clientRequest.getMethodName(), Object.class, clientRequest.getParam());
         }
         return null;
     }
 
-    public Object router(String serviceName, String methodName) {
+    public Object nonParam(String serviceName, String methodName) {
         Method method = ReflectionUtils.findMethod(context.getBean(serviceName).getClass(), methodName);
         return ReflectionUtils.invokeMethod(method, context.getBean(serviceName));
     }
 
-    public Object router(String serviceName, String methodName, Class aClass, Object param) {
+    public Object objParam(String serviceName, String methodName, Class aClass, Object param) {
         Method method = ReflectionUtils.findMethod(context.getBean(serviceName).getClass(), methodName, aClass);
         return ReflectionUtils.invokeMethod(method, context.getBean(serviceName), aClass, param);
     }
 
-//    public Object router(String className, String methodName) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-//        Class aClass = Class.forName(className);
-//        Method method = aClass.getMethod(methodName);
-//        return method.invoke();
+//    public Object intParam(String serviceName, String methodName, Class aClass, Object param) {
+//        Method method = ReflectionUtils.findMethod(context.getBean(serviceName).getClass(), methodName, aClass);
+//        return ReflectionUtils.invokeMethod(method, context.getBean(serviceName), aClass, param);
 //    }
 }
