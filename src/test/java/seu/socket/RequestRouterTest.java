@@ -34,21 +34,21 @@ public class RequestRouterTest {
 
     @Test
     public void getResponse1() throws Exception {
-        ServerResponse serverResponse = requestRouter.getResponse(clientRequest1);
+        ServerResponse serverResponse = requestRouter.handleRequest(clientRequest1);
         System.out.println(serverResponse);
         System.out.println(serverResponse.getData().getClass());
     }
 
     @Test
     public void getResponse2() throws Exception {
-        ServerResponse serverResponse = requestRouter.getResponse(clientRequest2);
+        ServerResponse serverResponse = requestRouter.handleRequest(clientRequest2);
         System.out.println(serverResponse);
         System.out.println(serverResponse.getData().getClass());
     }
 
     @Test
     public void getResponse3() throws Exception {
-        ServerResponse serverResponse = requestRouter.getResponse(clientRequest3);
+        ServerResponse serverResponse = requestRouter.handleRequest(clientRequest3);
         System.out.println(serverResponse);
         System.out.println(serverResponse.getData().getClass());
     }

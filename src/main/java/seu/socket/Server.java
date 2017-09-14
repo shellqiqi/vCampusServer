@@ -47,7 +47,7 @@ public class Server implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Socket client = null;
+        Socket client;
         while(runFlag){
             //等待客户端的连接，如果没有获取连接
             System.out.println("等待客户端的连接");

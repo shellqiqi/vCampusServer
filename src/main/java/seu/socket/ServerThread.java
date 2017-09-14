@@ -41,8 +41,7 @@ public class ServerThread implements Runnable {
             ObjectInputStream buf = new ObjectInputStream(new BufferedInputStream(client.getInputStream()));
             Object object = buf.readObject();
             if (object != null) {
-                //TODO: 测试服务端响应
-                out.writeObject(requestRouter.getResponse((ClientRequest) object));
+                out.writeObject(requestRouter.handleRequest((ClientRequest) object));
                 out.flush();
             }
             out.close();

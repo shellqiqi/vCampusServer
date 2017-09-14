@@ -17,7 +17,7 @@ public class RequestRouter {
         this.context = context;
     }
 
-    public ServerResponse getResponse(ClientRequest clientRequest) {
+    public ServerResponse handleRequest(ClientRequest clientRequest) {
         return new ServerResponse(invokeMethod(clientRequest.getServiceName(), clientRequest.getMethodName(), clientRequest.getParamTypes(), clientRequest.getParams()));
     }
 
