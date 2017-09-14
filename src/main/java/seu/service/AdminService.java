@@ -165,7 +165,7 @@ public class AdminService {
     }
 
     //管理员获取某个商品信息
-    public List<Commodity> getCommodityById(int id) {
+    public Commodity getCommodityById(int id) {
         return commodityDao.queryCommodityById(id);
     }
 

@@ -72,6 +72,7 @@ public class StudentDao {
         return jdbcTemplate.update(sql, params);
     }
 
+
     public Student queryStudentByStudentID(final int StudentId) {
         final String sql = "SELECT * FROM Student WHERE StudentID = ?";
         Object[] params = new Object[] {StudentId};
