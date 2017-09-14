@@ -20,10 +20,10 @@ public class RequestRouterTest {
     @Autowired
     RequestRouter requestRouter;
 
-    @Test
-    public void router() throws Exception {
-        List<Admin> adminList = (List) requestRouter.router("userService", "getAdmin");
-        System.out.println(adminList.get(0).getPassword());
-    }
+//    @Test
+//    public void router() throws Exception {
+//        List<Admin> adminList = (List) requestRouter.router("userService", "getAdmin");
+//        System.out.println(adminList.get(0).getPassword());
+//    }
 
 }

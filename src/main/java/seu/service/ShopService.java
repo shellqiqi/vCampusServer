@@ -24,7 +24,7 @@ public class ShopService {
     }
 
     //学生获取某个商品信息
-    public List<Commodity> getCommodityById(int id) {
+    public Commodity getCommodityById(int id) {
         return commodityDao.queryCommodityById(id);
     }
 
