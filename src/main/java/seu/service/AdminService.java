@@ -1,12 +1,13 @@
 package seu.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import seu.dao.*;
 import seu.domain.*;
 import seu.domain.Class;
 
 import java.util.List;
-
+@Service
 public class AdminService {
     @Autowired
     ClassDao classDao;

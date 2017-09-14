@@ -24,6 +24,13 @@ public class ClientRequest implements Serializable {
         this.params = params;
     }
 
+    public ClientRequest(String serviceName, String methodName) {
+        this.serviceName = serviceName;
+        this.methodName = methodName;
+        this.paramTypes = null;
+        this.params = null;
+    }
+
     public String getServiceName() {
         return serviceName;
     }
