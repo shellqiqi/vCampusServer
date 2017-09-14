@@ -56,10 +56,10 @@ public class CommodityDao {//TODO: Create Test
         return jdbcTemplate.queryForObject(sql, params, String.class);
     }
 
-    public List<Commodity> queryCommodityById(final int id) {
+    public Commodity queryCommodityById(final int id) {
         final String sql = "SELECT * FROM Commodity WHERE CommodityID = ?";
         Object[] params = new Object[] {id};
-        return jdbcTemplate.query(sql, params, new CommodityMapper());
+        return jdbcTemplate.queryForObject(sql, params, new CommodityMapper());
     }
 
     public List<Commodity> queryAll(){
