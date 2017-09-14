@@ -2,13 +2,15 @@ package seu.socket;
 
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
-public class ClientRequest<T> {
-    //TODO: 转用Java序列化实现
+public class ClientRequest implements Serializable {
+
     private String serviceName;
     private String methodName;
 
-    private T param;
+    private Object param;
     private String paramType;
 
     private String requestType;
@@ -17,7 +19,7 @@ public class ClientRequest<T> {
         super();
     }
 
-    public ClientRequest(String serviceName, String methodName, T param, String paramType, String requestType) {
+    public ClientRequest(String serviceName, String methodName, Object param, String paramType, String requestType) {
         this.serviceName = serviceName;
         this.methodName = methodName;
         this.param = param;
@@ -41,11 +43,11 @@ public class ClientRequest<T> {
         this.methodName = methodName;
     }
 
-    public T getParam() {
+    public Object getParam() {
         return param;
     }
 
-    public void setParam(T param) {
+    public void setParam(Object param) {
         this.param = param;
     }
 
@@ -67,6 +69,12 @@ public class ClientRequest<T> {
 
     @Override
     public String toString() {
-        return "ClientRequest{" + "serviceName='" + serviceName + '\'' + ", methodName='" + methodName + '\'' + ", param=" + param + ", paramType='" + paramType + '\'' + ", requestType='" + requestType + '\'' + '}';
+        return "ClientRequest{" +
+                "serviceName='" + serviceName + '\'' +
+                ", methodName='" + methodName + '\'' +
+                ", param=" + param +
+                ", paramType='" + paramType + '\'' +
+                ", requestType='" + requestType + '\'' +
+                '}';
     }
 }

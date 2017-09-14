@@ -14,13 +14,6 @@ public class RequestRouter {
     @Autowired
     ApplicationContext context;
 
-    @Autowired
-    JsonUtil jsonUtil;
-
-    public ClientRequest execute(String json) {
-        return jsonUtil.deserializeClientRequest(json);
-    }
-
     public Object router(ClientRequest clientRequest) {
         String requestType = clientRequest.getRequestType();
 

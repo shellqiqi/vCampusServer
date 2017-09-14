@@ -2,8 +2,10 @@ package seu.domain;
 
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
-public class Dormitory {
+public class Dormitory implements Serializable {
     private int dormitoryId;
     private int score;
 
