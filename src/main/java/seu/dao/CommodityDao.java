@@ -74,7 +74,7 @@ public class CommodityDao {//TODO: Create Test
                     rs.getInt("CommodityID"),
                     rs.getString("CommodityName"),
                     rs.getInt("Prize"),
-                    rs.getInt("Iventory")
+                    rs.getInt("Inventory")
             );
         }
     }

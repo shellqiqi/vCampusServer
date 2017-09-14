@@ -65,6 +65,6 @@ public class StudentService {
     }
 
     public int updateStudentInfo(Student student){
-
+        return 1;
     }
 }
