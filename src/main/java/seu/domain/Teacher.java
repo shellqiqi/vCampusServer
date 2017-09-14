@@ -2,8 +2,10 @@ package seu.domain;
 
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
-public class Teacher {
+public class Teacher implements Serializable {
     private int teacherId;
     private String teacherName;
     private int teacherPhoneNumber;
