@@ -1,11 +1,10 @@
 package seu.socket;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.Socket;
 
 @Component
@@ -24,6 +23,12 @@ public class ServerThread implements Runnable {
         this.client = client;
     }
 
+    private RequestRouter requestRouter;
+    @Autowired
+    public void setRequestRouter(RequestRouter requestRouter) {
+        this.requestRouter = requestRouter;
+    }
+
     @Override
     public void run() {
         Server.count++;
@@ -31,26 +36,13 @@ public class ServerThread implements Runnable {
 
         try{
             //获取Socket的输出流，用来向客户端发送数据
-            PrintStream out = new PrintStream(client.getOutputStream());
+            ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
             //获取Socket的输入流，用来接收从客户端发送过来的数据
-            BufferedReader buf = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            boolean flag =true;
-            while(flag){
-                //接收从客户端发送过来的数据
-                final String str =  buf.readLine();
-                //空字符防止阻塞
-                if(str == null || "".equals(str)){
-                    flag = false;
-                }else{
-                    //发送bye字符客户端退出，终止循环
-                    if("bye".equals(str)){
-                        flag = false;
-                    }else{
-                        //将接收到的字符串前面加上echo，发送到对应的客户端
-                        out.println("echo:" + str);
-                        System.out.println(str);
-                    }
-                }
+            ObjectInputStream buf = new ObjectInputStream(new BufferedInputStream(client.getInputStream()));
+            Object object = buf.readObject();
+            if (object != null) {
+                out.writeObject(requestRouter.handleRequest((ClientRequest) object));
+                out.flush();
             }
             out.close();
             client.close();
@@ -61,4 +53,5 @@ public class ServerThread implements Runnable {
         Server.count--;
         System.out.println("客户端数量: " + Server.count);
     }
+
 }

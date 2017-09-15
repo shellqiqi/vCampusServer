@@ -54,12 +54,6 @@
             <artifactId>ucanaccess</artifactId>
             <version>4.0.2</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.owlike</groupId>
-            <artifactId>genson</artifactId>
-            <version>1.4</version>
-        </dependency>
     </dependencies>
 
     <build>

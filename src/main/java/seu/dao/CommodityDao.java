@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class CommodityDao {//TODO: Create Test
+public class CommodityDao {
 
     private JdbcTemplate jdbcTemplate;
 

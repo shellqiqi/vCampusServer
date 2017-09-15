@@ -2,27 +2,33 @@ package seu.socket;
 
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+import java.util.Arrays;
+
 @Component
-public class ClientRequest<T> {
-    //TODO: 转用Java序列化实现
+public class ClientRequest implements Serializable {
+
     private String serviceName;
     private String methodName;
-
-    private T param;
-    private String paramType;
-
-    private String requestType;
+    private Class<?>[] paramTypes;
+    private Object[] params;
 
     public ClientRequest() {
         super();
     }
 
-    public ClientRequest(String serviceName, String methodName, T param, String paramType, String requestType) {
+    public ClientRequest(String serviceName, String methodName, Class<?>[] paramTypes, Object[] params) {
         this.serviceName = serviceName;
         this.methodName = methodName;
-        this.param = param;
-        this.paramType = paramType;
-        this.requestType = requestType;
+        this.paramTypes = paramTypes;
+        this.params = params;
+    }
+
+    public ClientRequest(String serviceName, String methodName) {
+        this.serviceName = serviceName;
+        this.methodName = methodName;
+        this.paramTypes = null;
+        this.params = null;
     }
 
     public String getServiceName() {
@@ -41,32 +47,29 @@ public class ClientRequest<T> {
         this.methodName = methodName;
     }
 
-    public T getParam() {
-        return param;
+    public Class<?>[] getParamTypes() {
+        return paramTypes;
     }
 
-    public void setParam(T param) {
-        this.param = param;
+    public void setParamTypes(Class<?>[] paramTypes) {
+        this.paramTypes = paramTypes;
     }
 
-    public String getParamType() {
-        return paramType;
+    public Object[] getParams() {
+        return params;
     }
 
-    public void setParamType(String paramType) {
-        this.paramType = paramType;
-    }
-
-    public String getRequestType() {
-        return requestType;
-    }
-
-    public void setRequestType(String requestType) {
-        this.requestType = requestType;
+    public void setParams(Object[] params) {
+        this.params = params;
     }
 
     @Override
     public String toString() {
-        return "ClientRequest{" + "serviceName='" + serviceName + '\'' + ", methodName='" + methodName + '\'' + ", param=" + param + ", paramType='" + paramType + '\'' + ", requestType='" + requestType + '\'' + '}';
+        return "ClientRequest{" +
+                "serviceName='" + serviceName + '\'' +
+                ", methodName='" + methodName + '\'' +
+                ", paramTypes=" + Arrays.toString(paramTypes) +
+                ", params=" + Arrays.toString(params) +
+                '}';
     }
 }
