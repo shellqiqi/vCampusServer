@@ -72,6 +72,11 @@ public class StudentDao {
         return jdbcTemplate.update(sql, params);
     }
 
+    public int updateStudentByStudentID(Student student){
+        final String sql = "UPDATE Student SET StudentName = ?, ClassID = ?, DormitoryID = ?, Balance = ?, Password = ? WHERE StudentID = ?";
+        Object[] params = new Object[]{student.getStudentName(),student.getClassId(),student.getDormitoryId(),student.getBalance(),student.getPassword(),student.getStudentId()};
+        return jdbcTemplate.update(sql, params);
+    }
 
     public Student queryStudentByStudentID(final int StudentId) {
         final String sql = "SELECT * FROM Student WHERE StudentID = ?";

@@ -52,5 +52,4 @@ public class RequestRouterTest {
         System.out.println(serverResponse);
         System.out.println(serverResponse.getData().getClass());
     }
-
 }

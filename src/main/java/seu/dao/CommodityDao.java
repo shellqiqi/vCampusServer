@@ -74,7 +74,7 @@ public class CommodityDao {
                     rs.getInt("CommodityID"),
                     rs.getString("CommodityName"),
                     rs.getInt("Prize"),
-                    rs.getInt("Iventory")
+                    rs.getInt("Inventory")
             );
         }
     }

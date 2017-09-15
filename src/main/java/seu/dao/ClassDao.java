@@ -32,9 +32,9 @@ public class ClassDao {
         return jdbcTemplate.update(sql, params);
     }
 
-    public int updateClassById(final int id, final Class clas) {
-        final String sql = "UPDATE Class SET ClassID=?,ClassName=?,Major=?,ClassSize=?,TeacherID=? WHERE ClassID=?";
-        Object[] params = new Object[] {clas.getClassId(), clas.getClassName(), clas.getMajor(), clas.getClassSize(), clas.getTeacherId(), id};
+    public int updateClassById(final Class clas) {
+        final String sql = "UPDATE Class SET ClassName=?,Major=?,ClassSize=?,TeacherID=? WHERE ClassID=?";
+        Object[] params = new Object[] { clas.getClassName(), clas.getMajor(), clas.getClassSize(), clas.getTeacherId(), clas.getClassId()};
         return jdbcTemplate.update(sql, params);
     }
 

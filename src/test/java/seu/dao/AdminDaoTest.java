@@ -13,6 +13,7 @@ import seu.domain.Admin;
 @SpringBootTest
 @Import(ApplicationContextConfig.class)
 public class AdminDaoTest {
+
     @Autowired
     AdminDao adminDaoItem;
 
@@ -43,6 +44,12 @@ public class AdminDaoTest {
         queryAllTest();
         System.out.println(adminDaoItem.updateAdminPasswordById(2,"passwd2"));
         queryAllTest();
+    }
+
+    @Test
+    public void updateAdminByAdminIDTest() throws Exception {
+        Admin admin = new Admin(1,"Pass111");
+        System.out.println(adminDaoItem.updateAdminByAdminID(admin));
     }
 
     @Test
