@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 import seu.config.ApplicationContextConfig;
+import seu.domain.Student;
 
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
@@ -17,33 +18,67 @@ public class StudentServiceTest {
     private StudentService studentService;
 
     @Test
-    public void setStudentUser() throws Exception {
+    public void loginTest() throws Exception {
+        System.out.println(studentService.login(4,"4444"));
     }
 
     @Test
-    public void login() throws Exception {
-
-        System.out.println(studentService.login(8,"8888"));
+    public void logoutTest() throws Exception {
+        System.out.println(studentService.logout());
     }
 
     @Test
-    public void logout() throws Exception {
+    public void insertStudentTest() throws Exception {
+        Student s = new Student(11,"SS11",90154,4,100,"pass");
+        System.out.println(studentService.insertStudent(s));
     }
 
     @Test
-    public void insertStudent() throws Exception {
+    public void deleteStudentTest() throws Exception {
+        System.out.println(studentService.deleteStudent(11));
     }
 
     @Test
-    public void deleteStudent() throws Exception {
+    public void updateStudentPasswordTest() throws Exception {
+        System.out.println(studentService.updateStudentPassword(10,"pass10"));
     }
 
     @Test
-    public void updateStudentPasswd() throws Exception {
+    public void updateStudentTest() throws Exception {
+        Student s = new Student(10,"sssss",90153,4,100,"pass1010");
+        System.out.println(studentService.updateStudent(s));
     }
 
     @Test
-    public void updateStudentInfo() throws Exception {
+    public void queryStudentByStudentIdTest() throws Exception {
+        System.out.println(studentService.queryStudentByStudentId(10));
     }
+
+    @Test
+    public void queryStudentByClassIdTest() throws Exception {
+        System.out.println(studentService.queryStudentByClassId(90153));
+    }
+
+    @Test
+    public void queryStudentByDormitoryIdTest() throws Exception {
+        System.out.println(studentService.queryStudentByDormitoryId(4));
+    }
+
+    @Test
+    public void queryStudentByCourseIdTest() throws Exception {
+        System.out.println(studentService.queryStudentByCourseId(4));
+    }
+
+    @Test
+    public void queryStudentByBookIdTest() throws Exception {
+        System.out.println(studentService.queryStudentByBookId(8));
+    }
+
+    @Test
+    public void queryAllStudentTest() throws Exception {
+        System.out.println(studentService.queryAllStudent());
+    }
+
+
 
 }

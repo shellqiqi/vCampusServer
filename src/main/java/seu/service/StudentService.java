@@ -30,16 +30,17 @@ public class StudentService {
         }
     }
 
-    public void logout(){
-        System.out.println("Logout");
+    public String logout(){
+        return "Logout";
     }
+
 
     public int insertStudent(Student student){
         try{
             return studentDao.insertStudent(student);
         }
-        catch(Exception ex) {
-            ex.printStackTrace();
+        catch(Exception e) {
+            e.printStackTrace();
             return -1;
         }
     }
@@ -54,9 +55,9 @@ public class StudentService {
         }
     }
 
-    public int updateStudentPasswd(Student student){
+    public int updateStudentPassword(int studentID,String passwd){
         try{
-            return studentDao.updatePasswordByStudentID(student.getStudentId(),student.getPassword());
+            return studentDao.updatePasswordByStudentID(studentID,passwd);
         }
         catch(Exception ex){
             ex.printStackTrace();
@@ -64,7 +65,75 @@ public class StudentService {
         }
     }
 
-    public int updateStudentInfo(Student student){
-        return 1;
+    public int updateStudent(Student student){
+        try{
+            return studentDao.updateStudentByStudentID(student);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
+
+
+    public Student queryStudentByStudentId(int id){
+        try{
+            return studentDao.queryStudentByStudentID(id);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Student> queryStudentByClassId(int classID){
+        try{
+            return studentDao.queryStudentByClassID(classID);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Student> queryStudentByDormitoryId(int dormitoryID){
+        try{
+            return studentDao.queryStudentByDormitoryId(dormitoryID);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Student> queryStudentByCourseId(int courseID){
+        try{
+            return studentDao.queryStudentByCourseId(courseID);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Student queryStudentByBookId(int bookID){
+        try{
+            return studentDao.queryStudentByBookId(bookID);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Student> queryAllStudent(){
+        try{
+            return studentDao.queryAll();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
