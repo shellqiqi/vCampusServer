@@ -80,7 +80,7 @@ public class StudentDaoTest {
 
     @Test
     public void queryStudentByStudentIDTest() throws Exception {
-        System.out.println(studentDaoItem.queryStudentByStudentID(8));
+        System.out.println(studentDaoItem.queryStudentByStudentID(9999123));
     }
 
     @Test

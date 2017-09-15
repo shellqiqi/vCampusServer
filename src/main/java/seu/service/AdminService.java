@@ -140,39 +140,10 @@ public class AdminService {
     public List<Teacher> getAllTeachers(){
         return teacherDao.queryAll();
     }
-
-    //管理员添加商品信息
-    public int addCommodity(Commodity comm) {
-        if (commodityDao.queryCommodityById(comm.getCommodityId()) == comm)
-            return 0;
-        else
-            return commodityDao.insertCommodity(comm);
-    }
-
     //管理员删除商品信息
     public int deleteCommodityById(int id) {
         return commodityDao.deleteCommodityById(id);
-    }
-
-    //管理员更改商品库存
-    public int changeInventoryById(Commodity commodity) {
-        return commodityDao.updateCommodityInventoryById(commodity.getCommodityId(), commodity.getInventory());
-    }
-
-    //管理员更改商品价格
-    public int changePriceById(Commodity commodity) {
-        return commodityDao.updateCommodityPrizeById(commodity.getCommodityId(), commodity.getPrize());
-    }
-
-    //管理员获取某个商品信息
-    public Commodity getCommodityById(int id) {
-        return commodityDao.queryCommodityById(id);
-    }
-
-    //管理员获取所有商品的信息
-    public List<Commodity> getAllCommodity() {
-        return commodityDao.queryAll();
-    }
+    } 
 
     //管理员添加课程
     public int insertCourse(Course course) {
@@ -201,59 +172,4 @@ public class AdminService {
         return courseDao.queryAll();
     }
 
-    //管理员增加宿舍
-    public int insertDormitory(Dormitory dormitory) {
-        if(dormitoryDao.queryScoreByDormitoryID(dormitory.getDormitoryId()) == dormitory.getScore())
-            return 0;
-        else
-            return dormitoryDao.insertDormitory(dormitory);
-    }
-
-    //管理员删除宿舍
-    public int deleteDormitoryByID(int id) {
-        if(studentDao.queryStudentByDormitoryId(id) == null)
-            return dormitoryDao.deleteDormitoryByID(id);
-        else
-            return 0;
-    }
-
-    //管理员更新学生分数与宿舍信息
-    public int updateScoreByID(Dormitory dormitory) {
-        if(dormitoryDao.queryScoreByDormitoryID(dormitory.getDormitoryId()) == dormitory.getScore())
-            return 0;
-        else
-            return dormitoryDao.updateScoreByID(dormitory.getDormitoryId()
-                    , dormitory.getScore());
-    }
-
-    //管理员查询所有学生成绩及宿舍信息
-    public List<Dormitory> getDormitoryAll() {
-        return dormitoryDao.queryAll();
-    }
-
-    //管理员添加图书
-    public int insertBook(Library book){
-        if(libraryDao.queryBookByBookId(book.getBookId()) == book)
-            return 0;
-        else
-            return libraryDao.insertBook(book);
-    }
-
-    //管理员删除图书
-    public int deleteBookByBookId(int id) {
-        return libraryDao.deleteBookByBookId(id);
-    }
-
-    //管理员更新图书信息
-    public int updateBookByBookId(Library book) {
-        if(libraryDao.queryBookByBookId(book.getBookId()) == book)
-            return libraryDao.updateBookByBookId(book.getBookId(),book.getStudentId(),book.getStartDate());
-        else
-            return 0;
-    }
-
-    //管理员获取所有学生所借图书全部信息
-    public List<Library> getLibraryAll() {
-        return libraryDao.queryAll();
-    }
 }
