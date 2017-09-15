@@ -27,8 +27,6 @@ public class ServerResponse implements Serializable {
 
     @Override
     public String toString() {
-        return "ServerResponse{" +
-                "data=" + data +
-                '}';
+        return "ServerResponse{" + "data=" + data + '}';
     }
 }

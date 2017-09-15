@@ -16,6 +16,7 @@ import java.net.SocketTimeoutException;
 public class Server implements Runnable {
 
     private ApplicationContext context;
+
     @Autowired
     public void setContext(ApplicationContext context) {
         this.context = context;
@@ -48,7 +49,7 @@ public class Server implements Runnable {
             e.printStackTrace();
         }
         Socket client;
-        while(runFlag){
+        while (runFlag) {
             //等待客户端的连接，如果没有获取连接
             System.out.println("等待客户端的连接");
             try {

@@ -22,7 +22,6 @@ public class Dormitory implements Serializable {
         return dormitoryId;
     }
 
-
     public void setDormitoryId(int dormitoryId) {
         this.dormitoryId = dormitoryId;
     }

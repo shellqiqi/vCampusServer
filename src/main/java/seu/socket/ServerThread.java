@@ -12,6 +12,7 @@ import java.net.Socket;
 public class ServerThread implements Runnable {
 
     private Socket client = null;
+
     void setClient(Socket client) {
         this.client = client;
     }
@@ -19,11 +20,13 @@ public class ServerThread implements Runnable {
     public ServerThread() {
         super();
     }
-    public ServerThread(Socket client){
+
+    public ServerThread(Socket client) {
         this.client = client;
     }
 
     private RequestRouter requestRouter;
+
     @Autowired
     public void setRequestRouter(RequestRouter requestRouter) {
         this.requestRouter = requestRouter;
@@ -34,7 +37,7 @@ public class ServerThread implements Runnable {
         Server.count++;
         System.out.println("客户端数量: " + Server.count);
 
-        try{
+        try {
             //获取Socket的输出流，用来向客户端发送数据
             ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
             //获取Socket的输入流，用来接收从客户端发送过来的数据
@@ -46,7 +49,7 @@ public class ServerThread implements Runnable {
             }
             out.close();
             client.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

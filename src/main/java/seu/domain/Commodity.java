@@ -22,7 +22,6 @@ public class Commodity implements Serializable {
         this.setInventory(inventory);
     }
 
-
     public int getCommodityId() {
         return commodityId;
     }

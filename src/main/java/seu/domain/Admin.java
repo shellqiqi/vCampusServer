@@ -9,7 +9,9 @@ public class Admin implements Serializable {
     private int adminId;
     private String password;
 
-    public Admin() {super();}
+    public Admin() {
+        super();
+    }
 
     public Admin(int adminId, String password) {
         this.adminId = adminId;
@@ -34,9 +36,6 @@ public class Admin implements Serializable {
 
     @Override
     public String toString() {
-        return "Admin{" +
-                "adminId=" + adminId +
-                ", password='" + password + '\'' +
-                '}';
+        return "Admin{" + "adminId=" + adminId + ", password='" + password + '\'' + '}';
     }
 }
