@@ -25,5 +25,4 @@ public class RequestRouterTest {
 //        List<Admin> adminList = (List) requestRouter.router("userService", "getAdmin");
 //        System.out.println(adminList.get(0).getPassword());
 //    }
-
 }

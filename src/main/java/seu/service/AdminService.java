@@ -10,7 +10,6 @@ import java.util.List;
 public class AdminService {
 
     private AdminDao adminDao;
-
     @Autowired
     public void setAdminUser(AdminDao adminUser){
         this.adminDao = adminUser;

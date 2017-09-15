@@ -24,45 +24,82 @@ public class CourseSelectService {
     }
 
     //学生添加选课
-    public int insertCourseSelect(CourseSelect courseSelect) {
-        if(courseSelectDao.queryGradeByCourseIDAndStudentID(courseSelect.getCourseId(),courseSelect.getStudentId()) == courseSelect.getGrade())
-            return 0;
-        else
-            return courseSelectDao.insertCourseSelect(courseSelect);
+    public int insertCourseSelect(final int studentID, final int courseID ) {
+        try{
+            return courseSelectDao.insertCourseSelect(studentID,courseID);
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     //学生删除所选课程
     public int deleteCourseSelectByCourseIDAndStudentID( int studentID ,  int courseID) {
-        return courseSelectDao.deleteCourseSelectByCourseIDAndStudentID(studentID, courseID);
+        try {
+            return courseSelectDao.deleteCourseSelectByCourseIDAndStudentID(studentID, courseID);
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     //学生更新选课信息
     public int updateGradeByCourseIDAndStudentID( int studentID,  int courseID,  int grade) {
-        return courseSelectDao.updateGradeByCourseIDAndStudentID(studentID, courseID, grade);
+        try {
+            return courseSelectDao.updateGradeByCourseIDAndStudentID(studentID, courseID, grade);
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     //学生获取成绩
     public int queryGradeByCourseIDAndStudentID(  int studentID,  int courseID) {
-        return courseSelectDao.queryGradeByCourseIDAndStudentID(studentID, courseID);
+        try {
+            return courseSelectDao.queryGradeByCourseIDAndStudentID(studentID, courseID);
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     //学生获取学生的id，选课id，课程id和成绩
     public List<CourseSelect> getCourseSelectAll() {
-        return courseSelectDao.queryAll();
+        try {
+            return courseSelectDao.queryAll();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     //学生通过学生id查询课程
-    public List<Course> queryCourseByStudentId(int id) {
-        return courseDao.queryCourseByStudentId(id);
+    public List<Course> queryCourseByStudentId(int studentID) {
+        try {
+            return courseDao.queryCourseByStudentId(studentID);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     //学生通过教师id查询课程
-    public List<Course> queryCourseByTeacherID(int id) {
-        return courseDao.queryCourseByTeacherID(id);
+    public List<Course> queryCourseByTeacherID(int teacherID) {
+        try {
+            return courseDao.queryCourseByTeacherID(teacherID);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     //获取所有课程的全部信息
     public List<Course> getCourseAll() {
-       return courseDao.queryAll();
+       try {
+           return courseDao.queryAll();
+       }catch (Exception e){
+           e.printStackTrace();
+           return null;
+       }
    }
 }

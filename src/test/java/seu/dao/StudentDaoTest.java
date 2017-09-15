@@ -30,7 +30,6 @@ public class StudentDaoTest {
         queryAllTest();
         System.out.println(studentDao.insertStudent(11,"s11",90153,2,1110,"101"));
         queryAllTest();
-    }
 
     @Test
     public void deleteStudentByStudentIDTest() throws Exception {
@@ -70,7 +69,9 @@ public class StudentDaoTest {
 
     @Test
     public void queryStudentByStudentIDTest() throws Exception {
+
         System.out.println(studentDao.queryStudentByStudentID(8));
+
 
     }
 

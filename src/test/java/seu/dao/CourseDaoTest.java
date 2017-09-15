@@ -19,7 +19,7 @@ public class CourseDaoTest {
     @Test
     public void insertCourseTest() throws Exception {
         queryAllTest();
-        Course course = new Course(9,"Course 9",12,12,4);
+        Course course = new Course(9,"Course 9",12,12,3);
         System.out.println(courseDaoItem.insertCourse(course));
         queryAllTest();
     }
