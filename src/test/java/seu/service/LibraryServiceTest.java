@@ -20,17 +20,15 @@ public class LibraryServiceTest {
     private LibraryService libraryService;
     @Test
     public void borrowBook() throws Exception {
-        System.out.println(libraryService.borrowBook(1,13));
+        System.out.println(libraryService.borrowBook(1,20));
     }
-
-    @Test
-    public void returnBook() throws Exception {
-        System.out.println(libraryService.returnBook(1));
-    }
-
     @Test
     public void reNewBook() throws Exception {
-        System.out.println(libraryService.reNewBook(3));
+        System.out.println(libraryService.reNewBook(2));
+    }
+    @Test
+    public void returnBook() throws Exception {
+        System.out.println(libraryService.returnBook(2));
     }
 
     @Test
@@ -40,7 +38,7 @@ public class LibraryServiceTest {
 
     @Test
     public void deleteBook() throws Exception {
-        System.out.println(libraryService.deleteBook(3));
+        System.out.println(libraryService.deleteBook(8));
     }
 
     @Test

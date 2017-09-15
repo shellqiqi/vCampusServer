@@ -45,10 +45,11 @@ public class ShopService {
     }
     public int updateCommodity(Commodity commodity){
         try{
-            commodityDao.updateCommodityInventoryById(commodity.getCommodityId(),commodity.getInventory());
-            commodityDao.updateCommodityPrizeById(commodity.getCommodityId(),commodity.getPrize());
-            return 1;
+            int ifupdateInvent = commodityDao.updateCommodityInventoryById(commodity.getCommodityId(),commodity.getInventory());
+            int ifupdatePrice = commodityDao.updateCommodityPrizeById(commodity.getCommodityId(),commodity.getPrize());
+            return (ifupdateInvent+ifupdatePrice==2)?1:0;
         }catch (Exception e){
+            e.printStackTrace();
             return -1;
         }
     }
@@ -67,17 +68,14 @@ public class ShopService {
         if (commodity.getInventory() != 0 && student.getBalance() - commodity.getPrize() >= 0) {
             try {
                 studentDao.updateBalanceByStudentID(student.getStudentId(), student.getBalance() - commodity.getPrize());
+                commodityDao.updateCommodityInventoryById(commodity.getCommodityId(), commodity.getInventory() - 1);
+                return 1;
             }catch (Exception e){
                 e.printStackTrace();
                 return -1;
             }
-            try {
-                commodityDao.updateCommodityInventoryById(commodity.getCommodityId(), commodity.getInventory() - 1);
-            }catch (Exception e){
-                return -1;
-            }
         }
-        return 1;
+        return 0;
     }
     //管理员获取某个商品信息
     public Commodity getCommodityById(int id) {
