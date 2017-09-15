@@ -1,8 +1,10 @@
 package seu.socket;
 
+import javafx.application.Platform;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import seu.controller.MainController;
 
 import java.io.*;
 import java.net.Socket;
@@ -27,15 +29,28 @@ public class ServerThread implements Runnable {
 
     private RequestRouter requestRouter;
 
+    private MainController mainController;
+
     @Autowired
     public void setRequestRouter(RequestRouter requestRouter) {
         this.requestRouter = requestRouter;
     }
 
+    @Autowired
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+
     @Override
     public void run() {
         Server.count++;
-        System.out.println("客户端数量: " + Server.count);
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                mainController.log("Request " + Server.count + " from " + client.getInetAddress().toString() + "\n");
+            }
+        });
 
         try {
             //获取Socket的输出流，用来向客户端发送数据
@@ -52,9 +67,5 @@ public class ServerThread implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        Server.count--;
-        System.out.println("客户端数量: " + Server.count);
     }
-
 }

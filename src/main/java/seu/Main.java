@@ -1,13 +1,55 @@
 package seu;
 
-import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import javafx.util.Callback;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import seu.socket.Server;
 
 @SpringBootApplication
-public class Main extends AbstractJavaFxApplicationSupport {
+public class Main extends Application {
 
-    public static void main(String[] args) {
-        //TODO: 将第一个view传入第二个参数　将启动界面传入第三个参数（可选）
-//        launchApp(Main.class, MainView.class, new mainSplashScreenView(), args);
+    private ConfigurableApplicationContext springContext;
+    private Parent rootNode;
+
+    public static void main(final String[] args) {
+        Application.launch(args);
+    }
+
+    @Override
+    public void init() throws Exception {
+        springContext = SpringApplication.run(Main.class);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Main.fxml"));
+        fxmlLoader.setControllerFactory(new Callback<Class<?>, Object>() {
+            @Override
+            public Object call(Class<?> requiredType) {
+                return springContext.getBean(requiredType);
+            }
+        });
+        rootNode = (Parent) fxmlLoader.load();
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                Server.runFlag = false;
+            }
+        });
+        stage.setScene(new Scene(rootNode));
+        stage.show();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        springContext.close();
     }
 }

@@ -28,8 +28,9 @@ public class StudentDaoTest {
     @Test
     public void insertStudentTest1() throws Exception {
         queryAllTest();
-        System.out.println(studentDao.insertStudent(11,"s11",90153,2,1110,"101"));
+        System.out.println(studentDao.insertStudent(11, "s11", 90153, 2, 1110, "101"));
         queryAllTest();
+    }
 
     @Test
     public void deleteStudentByStudentIDTest() throws Exception {
