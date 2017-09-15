@@ -41,7 +41,7 @@ public class TeacherDaoTest {
     @Test
     public void updateTeacherNameByTeacherIDTest() throws Exception {
         queryAllTest();
-        System.out.println(teacherDaoItem.updateTeacherNameByTeacherID(6,"T666"));
+        System.out.println(teacherDaoItem.updateTeacherNameByTeacherID(7,"T666"));
         queryAllTest();
     }
 
@@ -57,6 +57,12 @@ public class TeacherDaoTest {
         queryAllTest();
         System.out.println(teacherDaoItem.updatePasswordByTeacherID(6,"Pass666"));
         queryAllTest();
+    }
+
+    @Test
+    public void updateTeacherTest() throws Exception {
+        Teacher t = new Teacher(6,"teacher6",111,"pass6");
+        System.out.println(teacherDaoItem.updateTeacher(t));
     }
 
     @Test

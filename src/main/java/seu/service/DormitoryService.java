@@ -8,13 +8,9 @@ import seu.domain.Dormitory;
 import java.util.List;
 @Service
 public class DormitoryService{
+    private DormitoryDao dormitoryDao;
+
     @Autowired
-    DormitoryDao dormitoryDao;
-
-    public DormitoryDao getDormitoryUser() {
-        return dormitoryDao;
-    }
-
     public void setDormitoryUser(DormitoryDao dormitoryUser) {
         this.dormitoryDao = dormitoryUser;
     }

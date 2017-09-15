@@ -31,11 +31,12 @@ public class ClassDaoTest {
         queryAllTest();
     }
 
+
     @Test
     public void updateClassByIdTest() throws Exception {
         queryAllTest();
-        Class clss = new Class(90152,"2 class","Cs",20,1);
-        System.out.println(classDaoItem.updateClassById(90152,clss));
+        Class clss = new Class(90152,"Class2","cs",30,3);
+        System.out.println(classDaoItem.updateClassById(clss));
         queryAllTest();
     }
 
@@ -56,7 +57,7 @@ public class ClassDaoTest {
 
     @Test
     public void queryAllTest() throws Exception {
-        System.out.println(classDaoItem.queryAll().toString());
+        System.out.println(classDaoItem.queryAll());
     }
 
 }

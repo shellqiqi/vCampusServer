@@ -26,6 +26,7 @@ public class ShopService {
         this.commodityDao = commodityDao;
     }
 
+
     public int updatePrice(int commodityID, int price){
 
         try {

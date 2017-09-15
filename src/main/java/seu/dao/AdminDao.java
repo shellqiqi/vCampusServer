@@ -45,6 +45,13 @@ public class AdminDao {
         return jdbcTemplate.update(sql, params);
     }
 
+    public int updateAdminByAdminID(Admin admin)
+    {
+        final String sql = "UPDATE Admin SET Password = ? WHERE AdminID = ?";
+        Object[] params = new Object[] {admin.getPassword(),admin.getAdminId()};
+        return jdbcTemplate.update(sql, params);
+    }
+
     public Admin queryAdminById(final int id){
         final String sql = "SELECT * FROM Admin WHERE AdminID = ?";
         Object[] params = new Object[] {id};
