@@ -14,6 +14,8 @@ import java.util.Date;
 @SpringBootTest
 @Import(ApplicationContextConfig.class)
 public class LibraryDaoTest {
+
+
     @Autowired
     LibraryDao libraryDaoItem;
 
@@ -24,7 +26,11 @@ public class LibraryDaoTest {
         System.out.println(libraryDaoItem.insertBook(book));
         queryAllTest();
     }
+    @Test
+    public void queryBooksByBookName() throws Exception {
+        System.out.println(libraryDaoItem.queryBooksByBookName("book4"));
 
+    }
     @Test
     public void deleteBookByBookIdTest() throws Exception {
         queryAllTest();

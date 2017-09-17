@@ -67,16 +67,9 @@ public class LibraryService {
         return returnBook(bookID);
     }
 
-    public List<Library> getBookByBookName(String name){
-        List<Library>queryResult =new ArrayList<>();
+    public List<Library> getBookByBookName(String bookName){
         try{
-            List<Library> allBook = libraryDao.queryAll();
-            for (Library book:allBook) {
-                if (name.equals(book.getBookName())){
-                    queryResult.add(book);
-                }
-            }
-            return queryResult;
+            return libraryDao.queryBooksByBookName(bookName);
         }catch (Exception e){
             e.printStackTrace();
         }

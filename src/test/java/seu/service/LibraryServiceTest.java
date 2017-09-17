@@ -22,7 +22,7 @@ public class LibraryServiceTest {
     private LibraryService libraryService;
     @Test
     public void getBookByBookName() throws Exception {
-        System.out.println(libraryService.getBookByBookName("boo"));
+        System.out.println(libraryService.getBookByBookName("book4"));
     }
     @Test
     public void borrowBook() throws Exception {
