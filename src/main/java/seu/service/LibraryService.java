@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import seu.dao.LibraryDao;
 import seu.domain.Library;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -66,6 +67,15 @@ public class LibraryService {
         return returnBook(bookID);
     }
 
+    public List<Library> getBookByBookName(String bookName){
+        try{
+            return libraryDao.queryBooksByBookName(bookName);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+
+    }
     //学生通过图书id获取所借图书信息
     public Library getBookByBookId(int id) {
         try {
