@@ -1,12 +1,9 @@
 package seu.socket;
 
 import javafx.application.Platform;
-import javafx.event.EventHandler;
-import javafx.stage.WindowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
-import seu.Main;
 import seu.controller.MainController;
 
 import java.io.IOException;

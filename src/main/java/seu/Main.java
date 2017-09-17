@@ -33,7 +33,7 @@ public class Main extends Application {
                 return springContext.getBean(requiredType);
             }
         });
-        rootNode = (Parent) fxmlLoader.load();
+        rootNode = fxmlLoader.load();
     }
 
     @Override
@@ -45,6 +45,7 @@ public class Main extends Application {
             }
         });
         stage.setScene(new Scene(rootNode));
+        stage.setTitle("vCampusServer");
         stage.show();
     }
 

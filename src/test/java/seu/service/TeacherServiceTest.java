@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import seu.domain.Teacher;
 
-import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Import(ApplicationContextConfig.class)

@@ -6,12 +6,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import seu.socket.Server;
 
 import java.util.Date;
 
-@Component
+@Controller
 public class MainController {
 
     @FXML

@@ -7,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 import seu.config.ApplicationContextConfig;
-import static org.junit.Assert.*;
 
 import seu.domain.Commodity;
 

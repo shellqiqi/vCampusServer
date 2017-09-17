@@ -8,10 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import seu.domain.CourseSelect;
-import seu.domain.Library;
 import seu.domain.Student;
-import seu.domain.Dormitory;
+
 @Repository
 public class StudentDao {
 
