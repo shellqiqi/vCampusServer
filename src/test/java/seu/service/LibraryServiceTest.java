@@ -16,8 +16,14 @@ import java.util.Date;
 @SpringBootTest
 @Import(ApplicationContextConfig.class)
 public class LibraryServiceTest {
+
+
     @Autowired
     private LibraryService libraryService;
+    @Test
+    public void getBookByBookName() throws Exception {
+        System.out.println(libraryService.getBookByBookName("boo"));
+    }
     @Test
     public void borrowBook() throws Exception {
         System.out.println(libraryService.borrowBook(2,23));
