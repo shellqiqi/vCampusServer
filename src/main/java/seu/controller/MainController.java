@@ -1,17 +1,20 @@
 package seu.controller;
 
+import de.felixroske.jfxsupport.FXMLController;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.WindowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import seu.Main;
 import seu.socket.Server;
 
 import java.util.Date;
 
-@Controller
+@FXMLController
 public class MainController {
 
     @FXML
@@ -61,6 +64,13 @@ public class MainController {
         Server.runFlag = true;
         thread = new Thread(server);
         thread.start();
+
+        Main.getStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Server.runFlag = false;
+            }
+        });
     }
 
     public void stopServer() {

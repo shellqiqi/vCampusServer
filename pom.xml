@@ -47,6 +47,12 @@
             <artifactId>ucanaccess</artifactId>
             <version>4.0.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>de.roskenet</groupId>
+            <artifactId>springboot-javafx-support</artifactId>
+            <version>1.4.0</version>
+        </dependency>
     </dependencies>
 
     <build>
