@@ -1,6 +1,6 @@
 javafx:
     title: vCampusServer
     appicons:
-      - /banben.jpg
+      - /icon.jpg
     stage:
         resizable: false
