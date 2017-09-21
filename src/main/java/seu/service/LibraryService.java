@@ -164,8 +164,11 @@ public class LibraryService {
             return -1;
         }
     }
-    
-    //学生获取所有可以借的图书
+
+    /**
+     * 学生查询所有可以借的书籍
+     * @return 返回所有可以借的书籍
+     */
     public List<Library> getAllAvailableBook(){
         try{
             List<Library> noAvaliableBook = libraryDao.queryAllBorrowedBook();
