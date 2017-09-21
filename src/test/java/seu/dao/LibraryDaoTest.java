@@ -21,9 +21,9 @@ public class LibraryDaoTest {
     public void insertBookTest() throws Exception {
         queryAllTest();
         Library book = new Library();
-        book.setBookId(11);
+        book.setBookId(222);
         book.setBookName("book11");
-       // book.setStudentId(null);
+        book.setStudentId(1);
         System.out.println(libraryDaoItem.insertBook(book));
         queryAllTest();
     }
