@@ -148,7 +148,7 @@ public class TeacherService {
 
     /**
      * 查找所有教师
-     * @return
+     * @return 返回所有教师List
      */
     public List<Teacher> queryAllTeacher() {
         try {
