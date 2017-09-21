@@ -17,7 +17,6 @@ import java.util.Date;
 @Import(ApplicationContextConfig.class)
 public class LibraryServiceTest {
 
-
     @Autowired
     private LibraryService libraryService;
     @Test
@@ -26,20 +25,25 @@ public class LibraryServiceTest {
     }
     @Test
     public void borrowBook() throws Exception {
-        System.out.println(libraryService.borrowBook(2,23));
+        System.out.println(libraryService.borrowBook(2,1));
     }
     @Test
     public void reNewBook() throws Exception {
-        System.out.println(libraryService.reNewBook(2));
+        System.out.println(libraryService.reNewBook(1));
     }
     @Test
     public void returnBook() throws Exception {
-        System.out.println(libraryService.returnBook(2));
+        System.out.println(libraryService.returnBook(1));
     }
 
     @Test
     public void getAllBookList() throws Exception {
         System.out.println(libraryService.getAllBookList(1));
+    }
+
+    @Test
+    public void insertBook() throws Exception {
+        System.out.println(libraryService.insertBook(1111,"book111"));
     }
 
     @Test

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Date;
 
 @Repository
-public class LibraryDao {
+public class LibraryDao{
 
     private JdbcTemplate jdbcTemplate;
 
@@ -22,8 +22,14 @@ public class LibraryDao {
     }
 
     public int insertBook(final Library book) {
-        final String sql = "INSERT INTO Library(BookId,BookName,StudentId,StartDate) VALUES(?,?,?,?)";
-        Object[] params = new Object[]{book.getBookId(),book.getBookName(),book.getStudentId(),book.getStartDate()};
+        final String sql = "INSERT INTO Library(BookId,BookName,studentId,startDate) VALUES(?,?,?,?)";
+        Object[] params = new Object[]{book.getBookId(),book.getBookName(),book.getStudentId(),book.getStartDate() };
+        return jdbcTemplate.update(sql, params);
+    }
+
+    public int insertBook(final int bookId,final String bookName ){
+        final String sql = "INSERT INTO Library(BookId,BookName,startDate) VALUES(?,?,?)";
+        Object[] params = new Object[]{bookId,bookName, null };
         return jdbcTemplate.update(sql, params);
     }
 
@@ -32,10 +38,16 @@ public class LibraryDao {
         Object[] params = new Object[]{id};
         return jdbcTemplate.update(sql, params);
     }
-
+    //学生借书
     public int updateBookByBookId(final int bookId, final int studentId,final Date date){
         final String sql = "UPDATE Library SET StudentID = ? , StartDate = ? WHERE BookId = ?";
         Object[] params = new Object[]{studentId,date,bookId};
+        return jdbcTemplate.update(sql, params);
+    }
+    //学生还书
+    public int updateBookByBookId(final int bookId){
+        final String sql = "UPDATE Library SET StudentID = ? , StartDate = ? WHERE BookId = ?";
+        Object[] params = new Object[]{null,null,bookId};
         return jdbcTemplate.update(sql, params);
     }
 

@@ -28,7 +28,14 @@ public class CourseSelectService {
     //学生添加选课
     public int insertCourseSelect(final int studentID, final int courseID) {
         try {
-            return courseSelectDao.insertCourseSelect(studentID, courseID);
+            List<Course> studentCourses = courseDao.queryCourseByStudentId(studentID);
+            Course course = courseDao.queryCourseByCourseID(courseID);
+            if( studentCourses.contains(course) ){
+                //该学生已经选了这门课
+                return -2;
+            }
+            else
+                return courseSelectDao.insertCourseSelect(studentID, courseID);
         } catch (Exception e) {
             e.printStackTrace();
             return -1;

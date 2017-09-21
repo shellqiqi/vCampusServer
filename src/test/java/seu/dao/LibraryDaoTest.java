@@ -14,22 +14,28 @@ import java.util.Date;
 @SpringBootTest
 @Import(ApplicationContextConfig.class)
 public class LibraryDaoTest {
-
-
     @Autowired
     LibraryDao libraryDaoItem;
 
     @Test
     public void insertBookTest() throws Exception {
         queryAllTest();
-        Library book = new Library(9,"Book9",4, new Date());
+        Library book = new Library();
+        book.setBookId(11);
+        book.setBookName("book11");
+       // book.setStudentId(null);
         System.out.println(libraryDaoItem.insertBook(book));
         queryAllTest();
     }
+
+    @Test
+    public void insertBookTest2() throws Exception {
+        System.out.println(libraryDaoItem.insertBook(13,"book11"));
+    }
+
     @Test
     public void queryBooksByBookName() throws Exception {
         System.out.println(libraryDaoItem.queryBooksByBookName("book4"));
-
     }
     @Test
     public void deleteBookByBookIdTest() throws Exception {
@@ -44,6 +50,12 @@ public class LibraryDaoTest {
         System.out.println(libraryDaoItem.updateBookByBookId(3,2,new Date()));
         queryAllTest();
     }
+
+    @Test
+    public void updateBookByBookIdTest2() throws Exception {
+        System.out.println(libraryDaoItem.updateBookByBookId(1));
+    }
+
 
     @Test
     public void queryBookByBookIdTest() throws Exception {

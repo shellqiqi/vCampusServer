@@ -14,6 +14,7 @@ import seu.config.ApplicationContextConfig;
 public class CourseSelectServiceTest {
     @Autowired
     private CourseSelectService courseSelectService;
+
     @Test
     public void insertCourseSelect() throws Exception {
         System.out.println(courseSelectService.insertCourseSelect(1,5));

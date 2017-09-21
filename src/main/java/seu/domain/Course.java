@@ -68,4 +68,15 @@ public class Course implements Serializable {
     public String toString() {
         return "Course{" + "courseId=" + courseId + ", courseName='" + courseName + '\'' + ", credit=" + credit + ", period=" + period + ", teacherId=" + teacherId + '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Course) {
+            Course u = (Course) obj;
+            return this.courseName.equals(u.courseName)
+                    && (this.courseId == u.courseId)
+                    && (this.credit == u.credit) && (this.period == u.period) && (this.teacherId == u.teacherId);
+        }
+        return super.equals(obj);
+    }
 }

@@ -20,11 +20,7 @@ public class LibraryService {
 
     public int borrowBook(int studentID, int bookID) {
         try {
-            Library book = new Library();
-            book.setBookId(bookID);
-            book.setStudentId(studentID);
-            book.setStartDate(new Date());
-            return libraryDao.insertBook(book);
+            return libraryDao.updateBookByBookId(bookID,studentID,new Date());
         } catch (Exception e) {
             e.printStackTrace();
             return -1;
@@ -33,7 +29,7 @@ public class LibraryService {
 
     public int returnBook(int bookID) {
         try {
-            return libraryDao.deleteBookByBookId(bookID);
+            return libraryDao.updateBookByBookId(bookID);
         } catch (Exception e) {
             e.printStackTrace();
             return -1;
@@ -61,9 +57,24 @@ public class LibraryService {
         }
     }
 
+    //管理员根据bookID,bookName增加图书
+    public int insertBook(int bookID,String bookName){
+        try{
+            return libraryDao.insertBook(bookID,bookName);
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
     //管理员删除借书记录，以及图书
     public int deleteBook(int bookID) {
-        return returnBook(bookID);
+        try {
+            return libraryDao.deleteBookByBookId(bookID);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     public List<Library> getBookByBookName(String bookName){
