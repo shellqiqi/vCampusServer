@@ -16,7 +16,6 @@ import java.util.Date;
 @SpringBootTest
 @Import(ApplicationContextConfig.class)
 public class LibraryServiceTest {
-
     @Autowired
     private LibraryService libraryService;
     @Test
@@ -64,6 +63,11 @@ public class LibraryServiceTest {
     @Test
     public void updateBookByBookId() throws Exception {
         System.out.println(libraryService.updateBook(new Library(5,"book5",2,new Date())));
+    }
+
+    @Test
+    public void getAllAvailableBook() throws Exception {
+        System.out.println(libraryService.getAllAvailableBook());
     }
 
     @Test
