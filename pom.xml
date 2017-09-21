@@ -7,7 +7,7 @@
     <groupId>seu</groupId>
     <artifactId>vCampusServer</artifactId>
     <packaging>jar</packaging>
-    <version>1.1</version>
+    <version>1.2</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
