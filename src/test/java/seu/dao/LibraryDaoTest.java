@@ -68,6 +68,11 @@ public class LibraryDaoTest {
     }
 
     @Test
+    public void queryAllBorrowedBookTest() throws Exception {
+        System.out.println(libraryDaoItem.queryAllBorrowedBook());
+    }
+
+    @Test
     public void queryAllTest() throws Exception {
         System.out.println(libraryDaoItem.queryAll());
     }

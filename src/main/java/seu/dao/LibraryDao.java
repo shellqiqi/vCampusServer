@@ -68,6 +68,11 @@ public class LibraryDao{
         Object[] params = new Object[]{bookName};
         return jdbcTemplate.query(sql, params, new LibraryMapper());
     }
+    public List<Library> queryAllBorrowedBook(){
+        final String sql = "SELECT * FROM Library WHERE not StudentID = ?";
+        Object[] params = new Object[]{ 0 };
+        return jdbcTemplate.query(sql, params, new LibraryMapper());
+    }
     public List<Library> queryAll() {
         final String sql = "SELECT * FROM Library";
         return jdbcTemplate.query(sql, new LibraryMapper());

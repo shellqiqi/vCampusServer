@@ -166,6 +166,33 @@ public class LibraryService {
     }
 
     /**
+     * 学生查询所有可以借的书籍
+     * @return 返回所有可以借的书籍
+     */
+    public List<Library> getAllAvailableBook(){
+        try{
+            List<Library> noAvaliableBook = libraryDao.queryAllBorrowedBook();
+            List<Library> result = libraryDao.queryAll();
+            int SIZE = noAvaliableBook.size();
+            for( int i = 0 ; i < SIZE ;i++){
+                Library borrowedBook = noAvaliableBook.get(i);
+                for(int j = 0 ; j < result.size(); j++){
+                    if( borrowedBook.getBookId() == result.get(j).getBookId() )
+                    {
+                        result.remove(j);
+                        break;
+                    }
+                }
+            }
+            //result.removeAll(noAvaliableBook);
+            return result;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
      * 管理员获取所有学生所借图书全部信息
      * @return 返回所有学生所借图书全部信息
      */
