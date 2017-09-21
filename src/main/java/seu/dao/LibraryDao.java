@@ -21,12 +21,13 @@ public class LibraryDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    //管理员增加图书
     public int insertBook(final Library book) {
         final String sql = "INSERT INTO Library(BookId,BookName,studentId,startDate) VALUES(?,?,?,?)";
         Object[] params = new Object[]{book.getBookId(),book.getBookName(),book.getStudentId(),book.getStartDate() };
         return jdbcTemplate.update(sql, params);
     }
-
+    //管理员增加图书
     public int insertBook(final int bookId,final String bookName ){
         final String sql = "INSERT INTO Library(BookId,BookName,startDate) VALUES(?,?,?)";
         Object[] params = new Object[]{bookId,bookName, null };
